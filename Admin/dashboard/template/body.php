@@ -5,21 +5,22 @@ if($page_title=="dashboard")
 }elseif($page_title=="category")
 {
     include_once 'body/category/category.php';
-}elseif($page_title=="blog")
+}elseif($page_title=="add_category")
 {
-    include_once 'body/blog.php';
-}elseif($page_title=="contact")
+    include_once 'body/category/add_category.php';
+}elseif($page_title=="edite_category")
 {
-    include_once 'body/contact.php';
-}elseif($page_title=="terms")
+    include_once 'body/category/edite_category.php';
+}elseif($page_title=="show_category")
 {
-    include_once 'body/terms.php';
-}elseif($page_title=="checkout")
+    include_once 'body/category/show_category.php';
+}
+elseif($page_title=="main_product")
 {
-    include_once 'body/checkout.php';
-}elseif($page_title== "products")
+    include_once 'body/product/main_product.php';
+}elseif($page_title== "product")
 {
-    include_once 'body/products.php';
+    include_once 'body/product/product.php';
 }
 elseif($page_title== "product_detailes")
 {

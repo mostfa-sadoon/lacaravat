@@ -6,26 +6,17 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                      
-                        
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Category</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo "category.php?page_title="; ?>">all category</a></li>
+                                <li><a href="<?php echo "category.php?page_title=category"; ?>">all category</a></li>
                             </ul>
                         </li>
-                       
-                    
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">product</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="app-calendar.html">main product</a></li>
+                                <li><a href="<?php echo "dashboard.php?page_title=main_product"; ?>">main product</a></li>
                                 <li><a href="app-chat.html">all product</a></li>
                             </ul>
                         </li>
-                    
-                     
-                      
-                 
-                    
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
