@@ -1,12 +1,9 @@
-<div class="mb-3">
-    <a class="btn btn-primary text-light" href="<?php echo "category.php?page_title=add_product&cat_id=".$_GET['id'].""; ?>">add new product</a> 
-</div>
 <div class="row">
 <?php
     if($total_rows>0){
         while ($row = $products->fetch(PDO::FETCH_ASSOC)){   
             extract($row);?>
-              <div class="col-lg-4 col-xlg-3">
+           <div class="col-lg-4 col-xlg-3">
                 <div class="card">
                     <img class="card-img-top img-responsive" src="dashboard/assets/images/big/img1.jpg" alt="Card image cap">
                     <div class="card-body">
@@ -23,14 +20,14 @@
                     </div>
                 </div>
             </div>
-     <?php
+   <?php
         }
-         }
+        }
      ?>
 </div>
-<?php
-if($total_rows>5)
-{
-   include_once '../paging.php'; 
-}
-?>
+   <?php
+       if($total_rows>5)
+       {
+           include_once '../paging.php'; 
+       }
+   ?>

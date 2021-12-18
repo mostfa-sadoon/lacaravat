@@ -44,4 +44,18 @@
     $page_url = "category.php?cat_id=".$cat_id."&page_title=show_category";
     $total_rows=$product->countAll("cat_id",$cat_id);
   }
+    if(isset($_POST['add_product']) && $page_title="add_product")
+    {
+    $product = new Product($db);
+    $product->name=$_POST['name'];
+    $product->description=$_POST['desc'];
+    $product->img =basename($_FILES["img"]["name"]);
+    $product->quantity=$_POST['quantity'];
+    $product->price=$_POST['price'];
+    $product->title=$_POST['title'];
+    $product->cat_id=$_POST['cat_id'];
+    $product->status="true";
+    $product->shows="sub";
+    $product->create();
+    }
 ?>

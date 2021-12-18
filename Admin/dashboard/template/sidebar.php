@@ -13,8 +13,8 @@
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">product</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo "dashboard.php?page_title=main_product"; ?>">main product</a></li>
-                                <li><a href="app-chat.html">all product</a></li>
+                                <li><a href="<?php echo "product.php?page_title=main_product"; ?>">main product</a></li>
+                                <li><a href="<?php echo "product.php?page_title=all_product"; ?>">all product</a></li>
                             </ul>
                         </li>
                     </ul>

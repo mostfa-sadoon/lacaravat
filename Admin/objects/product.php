@@ -9,12 +9,11 @@ class Product{
     public $price;
     public $name;
     public $img;
-    public $desc;
+    public $description;
     public $title;
     public $status;
-    public $show;
+    public $shows;
     public $quantity;
-    public $description;
     public $cat_id;
     public $timestamp;
     public function __construct($db){
@@ -25,33 +24,37 @@ class Product{
      //write query 
       $query = "INSERT INTO
      " . $this->table_name . "
-      SET
-     name=:name, price=:price, description=:description, category_id=:category_id, created=:created";
-        
+      SET name=:name, price=:price, quantity=:quantity, cat_id=:cat_id, title=:title, img=:img, status=:status, shows=:shows, description=:description, created_at=:created_at  ";
       $stmt = $this->conn->prepare($query);
 
-       // posted values
-       $this->name=htmlspecialchars(strip_tags($this->name));
-       $this->price=htmlspecialchars(strip_tags($this->price));
-       $this->description=htmlspecialchars(strip_tags($this->description));
-       $this->category_id=htmlspecialchars(strip_tags($this->category_id));
-       
-       // to get time-stamp for 'created' field
-       $this->timestamp = date('Y-m-d H:i:s');
-
+        // posted values
+        $this->name=htmlspecialchars(strip_tags($this->name));
+        $this->price=htmlspecialchars(strip_tags($this->price));
+        $this->description=htmlspecialchars(strip_tags($this->description));
+        $this->cat_id=htmlspecialchars(strip_tags($this->cat_id));
+        $this->img=htmlspecialchars(strip_tags($this->img));
+        $this->title=htmlspecialchars(strip_tags($this->title));
+        $this->status=htmlspecialchars(strip_tags($this->status));
+        $this->shows=htmlspecialchars(strip_tags($this->shows));
+        $this->quantity=htmlspecialchars(strip_tags($this->quantity));
+        // to get time-stamp for 'created' field
+        $this->timestamp = date('Y-m-d H:i:s');
         // bind values 
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":price", $this->price);
         $stmt->bindParam(":description", $this->description);
-        $stmt->bindParam(":category_id", $this->category_id);
-        $stmt->bindParam(":created", $this->timestamp);
-
-       if($stmt->execute()){
-            return true;
+        $stmt->bindParam(":title", $this->title);
+        $stmt->bindParam(":quantity", $this->quantity);
+        $stmt->bindParam(":cat_id", $this->cat_id);
+        $stmt->bindParam(":created_at", $this->timestamp);
+        $stmt->bindParam(":status", $this->status);
+        $stmt->bindParam(":img", $this->img);
+        $stmt->bindParam(":shows", $this->shows);
+        if($stmt->execute()){
+            return true; 
         }else{
             return false;
         }
-    
    }
    //read main product in the home page
     function readmainproduct()

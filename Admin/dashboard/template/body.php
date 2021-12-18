@@ -15,12 +15,16 @@ if($page_title=="dashboard")
 {
     include_once 'body/category/show_category.php';
 }
+elseif($page_title=="add_product")
+{
+    include_once 'body/category/add_product.php';
+}
 elseif($page_title=="main_product")
 {
     include_once 'body/product/main_product.php';
-}elseif($page_title== "product")
+}elseif($page_title== "all_product")
 {
-    include_once 'body/product/product.php';
+    include_once 'body/product/all_product.php';
 }
 elseif($page_title== "product_detailes")
 {
