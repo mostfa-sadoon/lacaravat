@@ -9,6 +9,7 @@ $page_title="product";
 $database = new Database();
 $db = $database->getConnection();
 $Product = new Product($db);
+$Category = new Category($db);
 include_once "app/controller/productController.php";
 include_once "dashboard/template/admin_template.php";
 ?>

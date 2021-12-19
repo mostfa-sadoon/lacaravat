@@ -136,12 +136,16 @@ class Product{
                 $stmt->bindParam(2, $condation_value);
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-       
-                  $this->name = $row['name'];
-                  $this->price = $row['price'];
-                  $this->desc = $row['desc'];
-                  $this->price = $row['price'];
-                  $this->cat_id = $row['cat_id'];
+                $this->name = $row['name'];
+                $this->price = $row['price'];
+                $this->description = $row['description'];
+                $this->price = $row['price'];
+                $this->cat_id = $row['cat_id'];
+                $this->$shows=$row['shows'];
+                $this->$status=$row['status'];
+                $this->$img=$row['img'];
+                $this->$title=$row['title'];
+                $this->$quantity=$row['quantity'];
             }else{
                 $query="
                 SELECT*
@@ -156,12 +160,15 @@ class Product{
                 $stmt->bindParam(1, $this->id);
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-       
-                  $this->name = $row['name'];
-                  $this->price = $row['price'];
-                  $this->desc = $row['desc'];
-                  $this->price = $row['price'];
-                  $this->cat_id = $row['cat_id'];
+                $this->name = $row['name'];
+                $this->price = $row['price'];
+                $this->description = $row['description'];
+                $this->cat_id = $row['cat_id'];
+                $this->title = $row['title'];
+                $this->shows = $row['shows'];
+                $this->status = $row['status'];
+                $this->img = $row['img'];
+                $this->quantity = $row['quantity'];
             }
         }   
         
@@ -170,10 +177,7 @@ class Product{
             UPDATE 
             " . $this->table_name . "
             SET
-            name=:name,
-            price=:price,
-            description = :description,
-            category_id  = :category_id
+            name=:name ,price=:price,description=:description,title=:title,quantity=:quantity,img=:img,status=:status,shows=:shows,cat_id=:cat_id,updated_at=:updated_at    
             where
             id=:id
             ";
@@ -182,23 +186,32 @@ class Product{
             $this->name=htmlspecialchars(strip_tags($this->name));
             $this->price=htmlspecialchars(strip_tags($this->price));
             $this->description=htmlspecialchars(strip_tags($this->description));
-            $this->category_id=htmlspecialchars(strip_tags($this->category_id));
-            $this->id=htmlspecialchars(strip_tags($this->id));
-
+            $this->cat_id=htmlspecialchars(strip_tags($this->cat_id));
+            // $this->img=htmlspecialchars(strip_tags($this->img));
+            $this->title=htmlspecialchars(strip_tags($this->title));
+            $this->status=htmlspecialchars(strip_tags($this->status));
+            $this->shows=htmlspecialchars(strip_tags($this->shows));
+            $this->quantity=htmlspecialchars(strip_tags($this->quantity));
             // bind parameters
-            $stmt->bindParam(':name', $this->name);
-            $stmt->bindParam(':price', $this->price);
-            $stmt->bindParam(':description', $this->description);
-            $stmt->bindParam(':category_id', $this->category_id);
-            $stmt->bindParam(':id', $this->id);
-
+            $stmt->bindParam(":name", $this->name);
+            $stmt->bindParam(":price", $this->price);
+            $stmt->bindParam(":description", $this->description);
+            $stmt->bindParam(":title", $this->title);
+            $stmt->bindParam(":quantity", $this->quantity);
+            $stmt->bindParam(":cat_id", $this->cat_id);
+             $stmt->bindParam(":updated_at", $this->timestamp);
+             $stmt->bindParam(":status", $this->status);
+             $stmt->bindParam(":img", $this->img);
+             $stmt->bindParam(":shows", $this->shows);
+            $stmt->bindParam(":id", $this->id);
             // execute the query
             if($stmt->execute()){
                 return true;
             }
             return false;
         }
-        function delete(){
+
+          function delete(){
             $query="
                 DELETE from
                 ".$this->table_name."

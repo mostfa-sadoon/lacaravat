@@ -1,10 +1,13 @@
+<div class="mb-3">
+    <a class="btn btn-primary text-light" href="<?php echo "product.php?page_title=add_main_product"; ?>">add main product</a> 
+</div>
 <div class="row">
     <?php
     while ($row = $products->fetch(PDO::FETCH_ASSOC)){   
         extract($row);?>
         <div class="col-lg-4 col-xlg-3">
         <div class="card">
-            <img class="card-img-top img-responsive" src="dashboard/assets/images/big/img1.jpg" alt="Card image cap">
+            <img class="card-img-top img-responsive" src="../uploads/product/<?php echo $img; ?>" alt="Card image cap">
             <div class="card-body">
                 <h3 class="font-normal"><?php echo $name; ?></h3>
                 <span class="label label-info label-rounded">Technology</span>
@@ -12,8 +15,8 @@
                 <div class="d-flex m-t-20">
                     <button class="btn p-l-0 btn-link ">Read more</button>
                     <div class="ml-auto align-self-center">
-                        <a class="btn btn-info text-light">edite</a>
-                        <a class="btn btn-danger text-light">delete</a>
+                    <a href="<?php echo "product.php?page_title=edit_product&id=".$id.""; ?>" class="btn btn-success text-light"> <i class="fas fa-edit"></i> </a>
+                    <a href="<?php echo "product.php?page_title=delete_product&id=".$id."&redirect=main_product"; ?>" class="btn btn-danger text-light"> <i class="fas fa-trash-alt"></i> </a>
                     </div>
                 </div>
             </div>

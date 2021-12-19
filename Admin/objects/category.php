@@ -75,12 +75,13 @@ public function destroy()
 // used to read category name by its ID
 function readName(){
       
-  $query = "SELECT name FROM " . $this->table_name . " WHERE id = :id limit 0,1";
+  $query = "SELECT name ,id FROM " . $this->table_name . " WHERE id = :id limit 0,1";
   $stmt = $this->conn->prepare( $query );
   $stmt->bindParam(':id',$this->id);
   $stmt->execute();
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
   $this->name = $row['name'];
+  $this->id = $row['id'];
 }
 
 

@@ -35,10 +35,17 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
 
-
+ 
     <!-- this style for form CSS -->
     <link rel="stylesheet" href="dashboard/assets/plugins/dropify/dist/css/dropify.min.css">
-  
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+
+
+    
+
+
+    <link href="dashboard/assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
 
 </head>
 
