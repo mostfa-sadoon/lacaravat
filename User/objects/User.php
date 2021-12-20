@@ -79,7 +79,6 @@
         {
             if (password_verify($this->password, $row['password'])) {
               $_SESSION['email']=$value; // value here is email
-              header('location: ../index.php');
               return true;
               } else {
                 return false;     

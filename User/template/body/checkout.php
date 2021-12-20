@@ -76,7 +76,7 @@
                                         </div>
 
                                         <div class="float-right">
-                                            <a href="<?php echo "login/login.php" ?>">Finish</a>
+                                            <a href="<?php echo "login/login.php?page_title=Payment_method" ?>">Finish</a>
                                         </div>
                                     </div>
                                 </div>

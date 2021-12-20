@@ -28,4 +28,12 @@ elseif($page_title== "product_detailes")
 {
     include_once 'body/product_category.php';
 }
+elseif($page_title=="Payment_method")
+{
+    include_once 'body/Payment_method.php';
+}
+elseif($page_title=="cash")
+{
+    include_once 'body/receving_data.php';
+}
 ?>

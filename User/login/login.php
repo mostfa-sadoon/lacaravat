@@ -14,23 +14,33 @@
 	 $data = htmlspecialchars($data);
 	 return $data;
  }
- if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])){
-    $email=test_input($_POST['email']);
-    $password=test_input($_POST['password']);
-    // $password= password_hash($password, PASSWORD_DEFAULT);
-	$User->password=$password;
-	$User->email=$email;
-    if( $User->checkuser('email',$email))
-    {
-		if($User->login('email',$email)==false)
-		 {
-			$formerr['email']="email or password is wrong";
-		 }
-    }
-    else{
-       $formerr['email']="email or password is wrong";
-    }
-  }
+     
+	if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])){
+		$email=test_input($_POST['email']);
+		$password=test_input($_POST['password']);
+		// $password= password_hash($password, PASSWORD_DEFAULT);
+		$User->password=$password;
+		$User->email=$email;
+		echo $_GET['page_title'];
+		if( $User->checkuser('email',$email))
+		{
+			if($User->login('email',$email)==false)
+			{
+				$formerr['email']="email or password is wrong";
+			}else{
+				if(isset($_POST['redirect']) && $_POST['redirect']=="Payment_method")
+				{
+					$redirect= 'location: ../Payment_method.php';
+				}else{
+					$redirect= 'location: ../index.php';
+				}
+					header($redirect);
+			}
+		}
+		else{
+		$formerr['email']="email or password is wrong";
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,6 +64,7 @@
 					<img src="images/registration-form-1.jpg" alt="">
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+				 <input type="hidden" name="redirect" value="<?php echo $_GET['page_title']; ?>"> 
 					<h3>login</h3>
 				
 					<div class="form-wrapper">
