@@ -1,6 +1,8 @@
 <form class="mt-5"  method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">   
  <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
  <input type="hidden" name="old_img" value="<?php echo $Product->img; ?>">
+    <!-- this hidden input for redirect back -->
+ <input type="hidden" name="redirect" value="<?php echo $_GET['redirect']; ?>">
     <div class=" row ">
         <label for="example-text-input" class="col-2 col-form-label">product img</label>
         <div class=" col-8">

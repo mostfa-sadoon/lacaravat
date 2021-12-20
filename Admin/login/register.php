@@ -1,12 +1,12 @@
 <?php
-   include_once('../session.php');
+   include_once('../session_opretions/session.php');
    if (array_key_exists('email', $_SESSION)) {
-    header('location: ../index.php');
+    header('location: ../dashboard.php');
   }
     $database = new Database();
   	$db = $database->getConnection();
 	  // instantiate object table 
-  	$User = new User($db);
+  	$User = new Admin($db);
     $formerr=array();
 	function test_input($data) {
 		$data = trim($data);
@@ -143,8 +143,7 @@
           $User->phone=$phone;
           $User->password=$password;
           $User->create();
-          
-          header('location: ../index.php');
+          header('location: ../dashboard.php');
       }
   }  
   ?>

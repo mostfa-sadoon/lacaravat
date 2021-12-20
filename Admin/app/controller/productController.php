@@ -144,8 +144,10 @@
       }
        $Product->id=$_POST['id'];
        $Product->update();
+        
+       echo $_POST['redirect'];
 
-      //  header("location:product.php?page_title=all_product");
+       header("location:product.php?page_title=".$_POST['redirect']);
   }
   if($page_title=="delete_product")
   {

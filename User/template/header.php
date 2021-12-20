@@ -58,9 +58,36 @@
                                 <?php
                                   if(array_key_exists('email', $_SESSION)){?> 
                                      <img class="profile img-fluid" src="assets/images/userImg.jpg">
+                                         <!-- Profile -->
+                                <!-- ============================================================== -->
+                                <li class="nav-item dropdown" >
+                                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="dashboard/assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
+                                    <div class="dropdown-menu dropdown-menu-right animated flipInY" >
+                                        <ul class="dropdown-user">
+                                            <li>
+                                                <div class="dw-user-box">
+                                                    <div class="u-img"><img src="assets/images/userImg.jpg" alt="user"></div>
+                                                    <div class="u-text">
+                                                        <h4>Steave Jobs</h4>
+                                                        <p class="text-muted"><?php echo $_SESSION['email']; ?></p></div>
+                                                </div>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                            <li>
+                                            <a href="<?php echo "logout.php" ?>"><i class="fa fa-power-off"></i> Logout </a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
                                   <?php
                                   }
                                 ?>
+
+
+                          
+
+
                             </li>
                             <li>
                                 <a href="<?php echo"checkout.php?pagetitle=checkout" ?>">

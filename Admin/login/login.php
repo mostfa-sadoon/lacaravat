@@ -1,12 +1,12 @@
 <?php
  include_once('../session.php');
  if (array_key_exists('email', $_SESSION)) {
-	header('location: ../dashboard/dashboard.php');
+	header('location: ../dashboard.php');
 }
  $database = new Database();
-   $db = $database->getConnection();
-   // instantiate object table 
-   $Admin = new Admin($db);
+ $db = $database->getConnection();
+// instantiate object table 
+$Admin = new Admin($db);
  $formerr=array();
  function test_input($data) {
 	 $data = trim($data);
@@ -16,19 +16,21 @@
  }
  if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])){
     $email=test_input($_POST['email']);
+	echo $email;
     $password=test_input($_POST['password']);
     // $password= password_hash($password, PASSWORD_DEFAULT);
 	$Admin->password=$password;
 	$Admin->email=$email;
-    if( $Admin->checkuser('email',$email))
+    if( $Admin->checkuser('email',$email)==true)
     {
 		if($Admin->login('email',$email)==false)
 		 {
 			$formerr['email']="email or password is wrong";
 		 }
+		 header('location: ../dashboard.php');
     }
     else{
-       $formerr['email']="email or password is wrong";
+       $formerr['email']="email not found";
     }
   }
 ?>
@@ -45,9 +47,7 @@
 		<!-- STYLE CSS -->
 		<link rel="stylesheet" href="css/style.css">
 	</head>
-
 	<body>
-
 		<div class="wrapper" style="background-image: url('images/bg-registration-form-1.jpg');">
 			<div class="inner">
 				<div class="image-holder">
@@ -66,7 +66,7 @@
 						<i class="zmdi zmdi-lock"></i>
 					</div>
 					  <p class="alert-danger"><?php if(isset($formerr['email'])){ echo $formerr['email']; } ?></p>
-					  <p><a href="<?php echo"register.php" ?>">create acount</a></p>
+					  <!-- <p><a href="<?php echo"register.php" ?>">create acount</a></p> -->
 					  <input type="submit" name="login" class="btn btn-primary" value="login" > <i class="zmdi zmdi-arrow-right" ></i>
 				</form>
 			</div>

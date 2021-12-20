@@ -8,7 +8,7 @@
             extract($row);?>
               <div class="col-lg-4 col-xlg-3">
                 <div class="card">
-                    <img class="card-img-top img-responsive" src="dashboard/assets/images/big/img1.jpg" alt="Card image cap">
+                    <img class="card-img-top img-responsive"  src="../uploads/product/<?php echo $img; ?>" alt="Card image cap">
                     <div class="card-body">
                         <h3 class="font-normal"><?php echo $name ?></h3>
                         <span class="label label-info label-rounded">Technology</span>

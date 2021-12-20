@@ -1,6 +1,6 @@
 <?php
 class Product{
-   
+    
     // database connection and table name
     private $conn;
     private $table_name="products";
@@ -156,7 +156,7 @@ class Product{
        
                   $this->name = $row['name'];
                   $this->price = $row['price'];
-                  $this->desc = $row['desc'];
+                  $this->description = $row['description'];
                   $this->price = $row['price'];
                   $this->cat_id = $row['cat_id'];
             }

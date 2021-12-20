@@ -17,7 +17,7 @@
     public function  checkuser($condation,$value)
     {
         $query="
-        SELECT id FROM users WHERE ".$condation."=?
+        SELECT id FROM ".$this->table_name." WHERE ".$condation."=?
         ";
         $stmt = $this->conn->prepare( $query );
         $stmt->bindParam(1, $value);
@@ -61,10 +61,9 @@
             return false;
         }   
      }
-     
      public function login($condation,$value){
        $query="
-       select  password from users where ".$condation."=?
+       select  password from  ".$this->table_name." where ".$condation."=?
        ";
        $stmt = $this->conn->prepare($query);
        $stmt->bindParam(1, $value);
@@ -74,7 +73,7 @@
         if($count>0)
         {
             if (password_verify($this->password, $row['password'])) {
-              $_SESSION['email']=$value; // value here is email
+              $_SESSION['admin_email']=$value; // value here is email
               return true;
               } else {
                 return false;     

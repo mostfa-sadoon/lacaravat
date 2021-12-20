@@ -19,6 +19,7 @@
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
     <script src="node_modules\sweetalert2\dist\sweetalert2.all.min.js"></script>
+
     <!-- <script type="text/javascript" src='../files/bower_components/sweetalert/js/sweetalert2.all.min.js'> </script> -->
     <?php
         if(isset($_SESSION['success']) &&  $_SESSION['success']=="product add to cart successfuly")
