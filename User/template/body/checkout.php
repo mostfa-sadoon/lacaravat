@@ -25,12 +25,7 @@
                         <div class="row">   
                             
                              <?php
-                             foreach( $rows = $stmt->fetchAll() as $row)
-                             {
-                                 echo "Fdfdf";
-                                 echo $row['img'];
-                             }
-                                 foreach($_SESSION['product_id'] as $key =>$product)
+                                 foreach($_SESSION['product_title'] as $key =>$product)
                                  {
                                      ?>
                                          <div class="image-thumb col-md-2">
