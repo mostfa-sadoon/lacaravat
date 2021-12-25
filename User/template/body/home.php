@@ -37,7 +37,7 @@
                         <div class="col-lg-4">
                         <div class="trainer-item">
                             <div class="image-thumb">
-                                <img src="assets/images/saloon-product.png" alt="">
+                                <img src="../uploads/product/<?php echo $img; ?>" alt="">
                             </div>
                             <div class="down-content">
                                 <span>

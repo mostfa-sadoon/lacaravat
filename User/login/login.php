@@ -13,15 +13,14 @@
 	 $data = stripslashes($data);
 	 $data = htmlspecialchars($data);
 	 return $data;
- }
-     
+ }     
 	if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])){
 		$email=test_input($_POST['email']);
 		$password=test_input($_POST['password']);
 		// $password= password_hash($password, PASSWORD_DEFAULT);
 		$User->password=$password;
 		$User->email=$email;
-		echo $_GET['page_title'];
+		// echo $_GET['page_title'];
 		if( $User->checkuser('email',$email))
 		{
 			if($User->login('email',$email)==false)
@@ -81,8 +80,7 @@
 					  <input type="submit" name="login" class="btn btn-primary" value="login" > <i class="zmdi zmdi-arrow-right" ></i>
 				</form>
 			</div>
-		</div>
-		
+		</div>		
 	</body>
 </html>
 <?php

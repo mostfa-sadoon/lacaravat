@@ -1,6 +1,6 @@
 <?php
  include_once('../session.php');
- if (array_key_exists('email', $_SESSION)) {
+ if (array_key_exists('admin_email', $_SESSION)) {
 	header('location: ../dashboard.php');
 }
  $database = new Database();

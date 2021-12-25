@@ -1,8 +1,8 @@
 <?php
    include_once('../session.php');
-  //  if (array_key_exists('email', $_SESSION)) {
-  //   header('location: ../index.php');
-  // }
+    if (array_key_exists('email', $_SESSION)) {
+     header('location: ../index.php');
+    }
     $database = new Database();
   	$db = $database->getConnection();
 	  // instantiate object table 

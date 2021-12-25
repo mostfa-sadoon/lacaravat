@@ -17,7 +17,11 @@
                                 <li><a href="<?php echo "product.php?page_title=all_product"; ?>">all product</a></li>
                             </ul>
                         </li>
-                    </ul>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">order</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo "product.php?page_title=main_product"; ?>">order</a></li>
+                            </ul>
+                        </li>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
@@ -27,15 +31,12 @@
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-
-
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid ">
                 <!-- ============================================================== -->
-
                    <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="row page-titles">
@@ -54,5 +55,3 @@
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
-
-          

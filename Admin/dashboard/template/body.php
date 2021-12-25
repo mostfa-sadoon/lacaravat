@@ -55,4 +55,9 @@ elseif($page_title== "product_detailes")
 {
     include_once 'body/product_category.php';
 }
+//order
+elseif($page_title== "order")
+{
+    include_once 'body/order.php';
+}
 ?>

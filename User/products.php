@@ -8,6 +8,7 @@ $category = new Category($db);
 $product = new Product($db);
 $page_title="products";
 //functinality of home bage execute in body
+// records_per_page this variable declared in core.php
 $products = $product->readAll($from_record_num, $records_per_page);
 $page_url = "products.php?";
 $total_rows=$product->countAll();

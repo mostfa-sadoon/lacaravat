@@ -25,7 +25,7 @@
                 <div class="col-md-8">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="assets/images/product-5-720x480.jpg" alt="First slide" height='350px'>
+                            <img class="d-block w-100" src="../uploads/product/<?php echo $product->img; ?>" alt="First slide" height='350px'>
                         </div>
                         <!-- <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -59,6 +59,7 @@
                         <h2><?php echo $product->name ?></h2>
                            <p><?php echo $product->price ?><span>$</span></p>
                         <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
+                           <input type="hidden" name="product_id" value="<?php echo $product->id; ?>">
                            <input type="hidden" name="redirect_rout" value="<?php echo $_GET['page_title']; ?>">
                            <input type="hidden" name="cat_id" value="<?php echo $product->cat_id; ?>">
                             <input type="hidden" name="title" value="<?php echo $product->name; ?>"> </input>

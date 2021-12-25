@@ -18,30 +18,28 @@
      <div class="container">
            <div class="text-center">
                 <h2>Receiving data</h2>
-           </div>    
-             
-        
-
-            <form>
-                    <div class="form-group">
+           </div>                
+           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+               <input type="hidden" name="payment_method" value="<?php if(isset($_GET['page_title'])=="cash"){echo "cash";}else{echo "credit";} ?>">
+                    <div class="form-group col-12">
                         <label for="exampleInputEmail1">address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="text" name="orderaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your receving address">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">phone</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="number">
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                      <div class="form-group col-6">
+                            <label for="exampleInputPassword1">city</label>
+                            <input type="text"  name="city" class="form-control" id="exampleInputPassword1" placeholder="city">
+                        </div>
+                            <div class="row">
+                                    <div class="form-group col-6">
+                                        <label for="exampleInputPassword1">phone 1</label>
+                                        <input type="text" name="phone1" class="form-control" id="exampleInputPassword1" placeholder="number">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="exampleInputPassword1">phone 2</label>
+                                        <input type="text"  name="phone2" class="form-control" id="exampleInputPassword1" placeholder="number">
+                                    </div>
+                            </div>                      
+                    <button type="submit" name="receving_data" class="btn btn-primary">Submit</button>
             </form>
-
-
-
-
-            
-
      </div>

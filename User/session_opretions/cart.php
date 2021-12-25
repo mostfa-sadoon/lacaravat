@@ -2,6 +2,7 @@
 //start cart
 if(!isset($_SESSION['product_title']))
 {
+    $_SESSION['product_id']=[];
     $_SESSION['product_title']=[];
     $_SESSION['product_price']=[];
     $_SESSION['product_quantity']=[];
@@ -15,7 +16,6 @@ if($_POST)
      // desplay the count of product
         if(isset($_POST['add_to_cart']))
         {
-            echo "zepy";
             if(isset($_SESSION['product_num']))
             {
                 $_SESSION["product_num"] += $_POST['quantity'];
@@ -25,6 +25,7 @@ if($_POST)
             array_push($_SESSION['product_title'],$_POST['title']);
             array_push($_SESSION['product_price'],$_POST['price']);
             array_push($_SESSION['product_quantity'],$_POST['quantity']);
+            array_push($_SESSION['product_id'],$_POST['product_id']);
             // to display alert message
             $_SESSION['success']="product add to cart successfuly";
         }
@@ -50,6 +51,7 @@ if($_POST)
             $old_product_quantity= $_SESSION['product_quantity'][$index];
             unset( $_SESSION['product_quantity'][$index]);
             unset( $_SESSION['product_title'][$index]);
+            unset( $_SESSION['product_id'][$index]);
             unset( $_SESSION['product_price'][$index]);
             $_SESSION['product_num']-=  $old_product_quantity;
         }
@@ -67,15 +69,18 @@ if($_POST)
                 $redirect_rout ="product_category.php?cat_id=".$cat_id;
             } 
         }
-    
 }
-    foreach($_SESSION['product_quantity'] as $key=>$product)
+
+    if(isset($_SESSION['product_quantity'])!="")
     {
-        if(!isset($_POST['change']))
+        foreach($_SESSION['product_quantity'] as $key=>$product)
         {
-            $totlaprice+=$product*$_SESSION['product_price'][$key];
+            if(!isset($_POST['change']))
+            {
+                $totlaprice+=$product*$_SESSION['product_price'][$key];
+            }
         }
-    }
+    }      
     if(isset($_POST['redirect_rout']))
     {
         header('Location:'.$redirect_rout);

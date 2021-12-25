@@ -23,12 +23,18 @@
 
                    <!-- product info -->
                         <div class="row">   
+                            
                              <?php
-                                 foreach($_SESSION['product_title'] as $key =>$product)
+                             foreach( $rows = $stmt->fetchAll() as $row)
+                             {
+                                 echo "Fdfdf";
+                                 echo $row['img'];
+                             }
+                                 foreach($_SESSION['product_id'] as $key =>$product)
                                  {
                                      ?>
                                          <div class="image-thumb col-md-2">
-                                            <img class="img-fluid" src="assets/images/saloon-product.png" alt="">
+                                            <img class="img-fluid" src="../uploads/product/<?php echo $imgs[$key]['img'];?>"  alt="">
                                           </div>
                                         <div class="card-body col-md-10">
                                             <div class="card-title">
@@ -48,10 +54,8 @@
                                             </div>
                                         </div> 
                                  <?php
-                                 
                                  }
                              ?>
-                           
                          </div>
                  <!--  end product info -->
                     <div class="contact-form">
@@ -74,9 +78,13 @@
                                         <div class="float-left">
                                             <a href="#">Back</a>
                                         </div>
-
                                         <div class="float-right">
-                                            <a href="<?php echo "login/login.php?page_title=Payment_method" ?>">Finish</a>
+                                            <?php if(!empty($_SESSION['product_price']))
+                                                   {?>
+                                                         <a href="<?php  if(!array_key_exists('email', $_SESSION)) {echo "login/login.php?page_title=Payment_method";}else{echo "payment_method.php?page_title=Payment_method"; } ?>">Finish</a>
+                                                   <?PHP
+                                                   }
+                                            ?> 
                                         </div>
                                     </div>
                                 </div>

@@ -80,6 +80,7 @@
     $Category->id=$Product->cat_id;
     $Category->readName();
   }
+  //update product
   if(isset($_POST['update_product']))
   {
     $Product = new Product($db);
@@ -145,9 +146,12 @@
        $Product->id=$_POST['id'];
        $Product->update();
         
-       echo $_POST['redirect'];
-
-       header("location:product.php?page_title=".$_POST['redirect']);
+        $_POST['redirect'];
+       if(isset($_POST['redirect'])=="show_category")
+       {
+        header("location:category.php?page_title=show_category&id=".$_POST['cat_id']."");
+       }  
+ //      header("location:product.php?page_title=".$_POST['redirect']);
   }
   if($page_title=="delete_product")
   {

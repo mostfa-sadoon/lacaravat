@@ -17,8 +17,18 @@ class Product{
     public $description;
     public $cat_id;
     public $timestamp;
-    public function __construct($db){
+    public $k=array();
+    public function __construct($db,$test=null){
         $this->conn=$db;
+        // this to pass array in function in class
+        if(isset($test))
+        {
+            if (is_array($test)){
+                foreach($test as $k=>$v){
+                    array_push($this->k, $v);
+                }
+             }
+        }
     }
    //create product
    function create(){
@@ -135,6 +145,7 @@ class Product{
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
        
                   $this->name = $row['name'];
+                  $this->img = $row['img'];
                   $this->price = $row['price'];
                   $this->desc = $row['desc'];
                   $this->price = $row['price'];
@@ -153,15 +164,32 @@ class Product{
                 $stmt->bindParam(1, $this->id);
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-       
                   $this->name = $row['name'];
+                  $this->img = $row['img'];
                   $this->price = $row['price'];
                   $this->description = $row['description'];
                   $this->price = $row['price'];
                   $this->cat_id = $row['cat_id'];
             }
         }   
-        
+        // this function to select img of product in cart beause cart take info of products from sessions
+        function customproduct()
+        { 
+            $in_values = implode(',', $this->k);
+            $query="
+            SELECT 
+            img
+            FROM
+            {$this->table_name}
+            where
+            id IN (".$in_values.")
+            ";
+             $stmt = $this->conn->prepare( $query );
+             $stmt->execute();
+             $imgs = $stmt->fetchall();   
+             return $imgs;
+          //  print_r($rows);
+        }
         function update(){
             $query="
             UPDATE 
@@ -268,5 +296,46 @@ class Product{
                 
                     return $row['total_rows'];
                 }
+                public function check_quantity()
+                {
+                    $query="
+                    SELECT 
+                    quantity
+                    FROM
+                    {$this->table_name}
+                    where
+                    id=?
+                    Limit
+                    0,1
+                    ";
+                    $stmt = $this->conn->prepare( $query );
+                    $stmt->bindParam(1, $this->id);
+                    $stmt->execute();
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                      $this->quantity = $row['quantity'];
+                  }
+                  public function update_quantity($quantity)
+                  {
+                    $query="
+                    UPDATE 
+                    " . $this->table_name . "
+                    SET quantity = quantity - ".$quantity." 
+                    where
+                    id=:id
+                    ";
+                    $stmt=$this->conn->prepare($query);
+                    // posted values
+                    $this->id=htmlspecialchars(strip_tags($this->id));
+                    $stmt->bindParam(':id', $this->id);
+                    if($stmt->execute()){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                  }
+
+
+
 }
 ?>

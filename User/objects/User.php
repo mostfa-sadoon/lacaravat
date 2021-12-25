@@ -60,6 +60,15 @@
         $stmt->bindParam(":created_at", $this->timestamp);
        if($stmt->execute()){
         $_SESSION['email']=$this->email; // value here is email
+            $query="
+            SELECT id FROM users WHERE email=?
+            ";
+            $stmt = $this->conn->prepare( $query );
+            $stmt->bindParam(1, $this->email);
+            $stmt->execute();
+            $row=$stmt->fetch();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+             $_SESSION['id']=$row['id'];
             return true;
         }else{
             return false;
@@ -68,7 +77,7 @@
      
      public function login($condation,$value){
        $query="
-       select  password from users where ".$condation."=?
+       select  password ,id from users where ".$condation."=?
        ";
        $stmt = $this->conn->prepare($query);
        $stmt->bindParam(1, $value);
@@ -79,6 +88,7 @@
         {
             if (password_verify($this->password, $row['password'])) {
               $_SESSION['email']=$value; // value here is email
+              $_SESSION['id']=$row['id'];
               return true;
               } else {
                 return false;     

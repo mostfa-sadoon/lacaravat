@@ -1,4 +1,4 @@
- <?php
+ <!-- <?php
  $stmt=$category->read();
  ?>
  <!-- ***** Preloader Start ***** -->
@@ -83,11 +83,6 @@
                                   <?php
                                   }
                                 ?>
-
-
-                          
-
-
                             </li>
                             <li>
                                 <a href="<?php echo"checkout.php?pagetitle=checkout" ?>">
@@ -104,4 +99,4 @@
             </div>
         </div>
     </header>
-    <!-- ***** Header Area End ***** -->
+    <!-- ***** Header Area End ***** --> 

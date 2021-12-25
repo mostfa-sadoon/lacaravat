@@ -17,7 +17,7 @@
 
     <!-- ***** Fleet Starts ***** -->
     <section class="section" id="trainers">
-        <div class="container">
+        <div class="container-fluid">
             <br>
             <br>
             <div class="row">
@@ -25,10 +25,10 @@
                     if($total_rows>0){
                         while ($row = $products->fetch(PDO::FETCH_ASSOC)){   
                             extract($row);?>
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <div class="trainer-item">
                                         <div class="image-thumb">
-                                            <img src="assets/images/product-1-720x480.jpg" alt="">
+                                            <img src="../uploads/product/<?php echo $img; ?>" alt="">
                                         </div>
                                         <div class="down-content">  
                                             <span>
