@@ -70,7 +70,9 @@
              $_SESSION['id']=$row['id'];
              $_SESSION['user_name']=$row['user_name'];
             return true;
+            echo "Fdfd";
         }else{
+          echo "zepy";
             return false;
         }   
      }
