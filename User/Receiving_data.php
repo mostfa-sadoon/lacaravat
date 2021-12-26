@@ -21,7 +21,6 @@ $page_title="cash";
         $Order->customer_name=$_SESSION['user_name'];
         $Order->total_price=50;
         $Order->total_unit=50;
-        $Order->create();
         if(isset($_POST['payment_method'])=="cash")
         {
             $Order->kind="cash";
