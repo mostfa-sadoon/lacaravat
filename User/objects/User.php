@@ -76,6 +76,7 @@
           
         }else{
           echo "zepy";
+          print_r($this->conn->errorInfo());
             return false;
         }   
      }
