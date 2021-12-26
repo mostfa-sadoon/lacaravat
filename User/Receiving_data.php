@@ -37,9 +37,6 @@ $page_title="cash";
             $product = new Product($db);
             $product->id=$product_id;
             $product->check_quantity();
-            // echo $product->quantity;
-            // echo $_SESSION['product_quantity'][$key];
-           
             if($product->quantity >= $_SESSION['product_quantity'][$key])
             {
             $accepted=true;                      
@@ -50,10 +47,8 @@ $page_title="cash";
         }
         if($accepted==true)
         {
-           
             if($Order->create())
-            {
-                
+            {       
                 $Order_detailes = new Order_detailes($db);
                 foreach($_SESSION['product_id'] as $key=>$product_id)
                 {

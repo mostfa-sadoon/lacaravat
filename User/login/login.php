@@ -1,9 +1,14 @@
 <?php
- include_once('../session.php');
+  session_start();
+  // core.php holds pagination variables
+  include_once '../config/core.php';  
+  // include database and object files
+  include_once '../config/database.php';
+  include_once '../objects/User.php';
  if (array_key_exists('email', $_SESSION)) {
 	header('location: ../index.php');
 }
- $database = new Database();
+   $database = new Database();
    $db = $database->getConnection();
    // instantiate object table 
    $User = new User($db);

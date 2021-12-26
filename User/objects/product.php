@@ -30,7 +30,7 @@ class Product{
              }
         }
     }
-   //create product
+    //create product
    function create(){
      //write query 
       $query = "INSERT INTO

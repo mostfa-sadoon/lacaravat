@@ -13,4 +13,6 @@ include_once 'objects/category.php';
 include_once 'objects/User.php';
 include_once 'objects/Order.php';
 include_once 'objects/Order_detailes.php';
+$database = new Database();
+$db = $database->getConnection();
 ?>
