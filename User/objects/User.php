@@ -76,6 +76,11 @@
           
         }else{
           echo "zepy";
+          $databaseErrors = $stmt->errorInfo();
+          if( !empty($databaseErrors) ){  
+            $errorInfo = print_r($databaseErrors, true); 
+            $errorLogMsg = "error info: $errorInfo"; 
+        }
           print_r($this->conn->errorInfo());
           echo $this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
             return false;
