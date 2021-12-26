@@ -2,7 +2,7 @@
  class Order {
      // database connection and table name
      private $conn;
-     private $table_name="Orders";
+     private $table_name="orders";
      // object properties
      public $id;
      public $user_id;
