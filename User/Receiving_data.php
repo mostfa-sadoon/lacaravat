@@ -29,7 +29,7 @@ $page_title="cash";
             $Order->kind="credit";
         }
          // this column in database check if customer recive product or not
-         $Order->status="false";         
+         $Order->status='false';         
          $accepted;
         // here we check if quantity is provides
         foreach($_SESSION['product_id'] as $key=>$product_id)
