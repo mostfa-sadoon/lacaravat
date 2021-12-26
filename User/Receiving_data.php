@@ -28,7 +28,7 @@ $page_title="cash";
         }else{
             $Order->kind="visa";
         }
-        echo $Order->kind;
+         //  echo $Order->kind;
          // this column in database check if customer recive product or not
          $Order->status="false";         
          $accepted;
