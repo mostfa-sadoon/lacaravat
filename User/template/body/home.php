@@ -30,7 +30,9 @@
                 </div>
             </div>
             <div class="row">
+            
                 <?php
+              
                 while ($row_product = $product->fetch(PDO::FETCH_ASSOC)){
                     extract($row_product);
                     ?>

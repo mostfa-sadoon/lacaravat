@@ -70,6 +70,7 @@
                                                     <div class="u-text">
                                                         <h4>Steave Jobs</h4>
                                                         <p class="text-muted"><?php echo $_SESSION['email']; ?></p></div>
+                                                        
                                                 </div>
                                             </li>
                                             <li role="separator" class="divider"></li>

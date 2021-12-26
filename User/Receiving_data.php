@@ -7,6 +7,8 @@ $db = $database->getConnection();
 $category = new Category($db);
 $product = new Product($db);
 $page_title="cash";
+
+
    //the logic of the form is here
     if(isset($_POST['receving_data']))
     {
@@ -16,15 +18,18 @@ $page_title="cash";
         $Order->phone2=$_POST['phone2'];
         $Order->orderaddress=$_POST['orderaddress'];
         $Order->city=$_POST['city'];
+        $Order->customer_name=$_SESSION['user_name'];
+        $Order->total_price=50;
+        $Order->total_unit=50;
+        $Order->create();
         if(isset($_POST['payment_method'])=="cash")
         {
-                  $Order->kind="cash";
+            $Order->kind="cash";
         }else{
             $Order->kind="credit";
         }
          // this column in database check if customer recive product or not
-        $Order->status="false";
-         
+         $Order->status="false";         
          $accepted;
         // here we check if quantity is provides
         foreach($_SESSION['product_id'] as $key=>$product_id)
@@ -32,8 +37,9 @@ $page_title="cash";
             $product = new Product($db);
             $product->id=$product_id;
             $product->check_quantity();
-            echo $product->quantity;
-            echo $_SESSION['product_quantity'][$key];
+            // echo $product->quantity;
+            // echo $_SESSION['product_quantity'][$key];
+           
             if($product->quantity >= $_SESSION['product_quantity'][$key])
             {
             $accepted=true;                      
@@ -44,11 +50,14 @@ $page_title="cash";
         }
         if($accepted==true)
         {
+           
             if($Order->create())
             {
+                
                 $Order_detailes = new Order_detailes($db);
                 foreach($_SESSION['product_id'] as $key=>$product_id)
                 {
+                    echo "Fdf";
                     $Order_detailes->order_id=$Order->last_id;
                     $Order_detailes->user_id=$_SESSION['id']; 
                     $Order_detailes->quantity=$_SESSION['product_quantity'][$key];
@@ -69,7 +78,7 @@ $page_title="cash";
                     //   $_SESSION['product_id']="";
                     //   $_SESSION['product_quantity']="";
                     //   $_SESSION['product_price']="";
-                      header("location:Paying_process.php");
+                    header("location:Paying_process.php");
             }
         }
       

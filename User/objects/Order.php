@@ -13,26 +13,33 @@
      public $phone2;
      public $kind;
      public $city;
+     public $customer_name;
+     public $total_unit;
+     public $total_price;
      public $last_id;
 
      public function __construct($db){
        $this->conn=$db;
      }
+     // ,city=:city, status=:status, phone1=:phone1,customer_name=:customer_name,total_price=:total_price,total_unit=:total_unit,phone2=:phone2, kind=:kind,
       function create(){
         $query = "INSERT INTO
         " . $this->table_name . "
          SET
-        user_id=:user_id,city=:city,orderaddress=:orderaddress, status=:status, phone1=:phone1, phone2=:phone2, kind=:kind,created_at=:created_at";
-        $stmt = $this->conn->prepare($query);
-         // to get time-stamp for 'created' field
-         $this->timestamp = date('Y-m-d H:i:s');
-         $this->user_id=htmlspecialchars(strip_tags($this->user_id));
-         $this->orderaddress=htmlspecialchars(strip_tags($this->orderaddress));
-         $this->status=htmlspecialchars(strip_tags($this->status));
-         $this->phone1=htmlspecialchars(strip_tags($this->phone1));
-         $this->phone2=htmlspecialchars(strip_tags($this->phone2));
-         $this->kind=htmlspecialchars(strip_tags($this->kind));
-         $this->city=htmlspecialchars(strip_tags($this->city));
+        user_id=:user_id,orderaddress=:orderaddress,city=:city,phone1=:phone1,total_price=:total_price,total_unit=:total_unit,customer_name=:customer_name,kind=:kind,phone2=:phone2,status=:status,created_at=:created_at";
+          $stmt = $this->conn->prepare($query);
+          // to get time-stamp for 'created' field
+          $this->timestamp = date('Y-m-d H:i:s');
+          $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+          $this->orderaddress=htmlspecialchars(strip_tags($this->orderaddress));
+          $this->status=htmlspecialchars(strip_tags($this->status));
+          $this->phone1=htmlspecialchars(strip_tags($this->phone1));
+          $this->phone2=htmlspecialchars(strip_tags($this->phone2));
+          $this->kind=htmlspecialchars(strip_tags($this->kind));
+          $this->city=htmlspecialchars(strip_tags($this->city));
+          $this->customer_name=htmlspecialchars(strip_tags($this->customer_name));
+          $this->total_unit=htmlspecialchars(strip_tags($this->total_unit));
+          $this->total_price=htmlspecialchars(strip_tags($this->total_price));
           // bind values 
           $stmt->bindParam(":user_id", $this->user_id);
           $stmt->bindParam(":orderaddress", $this->orderaddress);
@@ -41,6 +48,9 @@
           $stmt->bindParam(":phone2", $this->phone2);
           $stmt->bindParam(":kind", $this->kind);
           $stmt->bindParam(":city", $this->city);
+          $stmt->bindParam(":customer_name", $this->customer_name);
+          $stmt->bindParam(":total_unit", $this->total_unit);
+          $stmt->bindParam(":total_price", $this->total_price);
           $stmt->bindParam(":created_at", $this->timestamp);
          if($stmt->execute()){
             $this->last_id = $this->conn->lastInsertId();
@@ -59,7 +69,6 @@
                   where user_id=".$this->user_id."
               ORDER BY
                   id";  
-
       $stmt = $this->conn->prepare( $query );
       $stmt->execute();
       return $stmt;
