@@ -69,7 +69,7 @@ $page_title="cash";
                     //   $_SESSION['product_id']="";
                     //   $_SESSION['product_quantity']="";
                     //   $_SESSION['product_price']="";
-                      header("location:paying_process.php");
+                      header("location:Paying_process.php");
             }
         }
       
