@@ -73,7 +73,7 @@
             echo "Fdfd";
           
               print_r($this->conn->errorInfo());
-              $this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+          echo    $this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
           
         }else{
           echo "zepy";
