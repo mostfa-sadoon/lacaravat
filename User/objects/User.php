@@ -58,22 +58,21 @@
         $stmt->bindParam(":password", $this->password);
         $stmt->bindParam(":created_at", $this->timestamp);
         if($stmt->execute()){
-        $_SESSION['email']=$this->email; // value here is email
-            $query="
-            SELECT id ,user_name FROM users WHERE email=?
-            ";
-            $stmt = $this->conn->prepare( $query );
-            $stmt->bindParam(1, $this->email);
-            $stmt->execute();
-            $row=$stmt->fetch();
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-             $_SESSION['id']=$row['id'];
-             $_SESSION['user_name']=$row['user_name'];
+        $_SESSION['id'] = $this->conn->lastInsertId();
+           $_SESSION['email']=$this->email; // value here is email
+            // $query="
+            // SELECT id ,user_name FROM users WHERE email=?
+            // ";
+            // $stmt = $this->conn->prepare( $query );
+            // $stmt->bindParam(1, $this->email);
+            // $stmt->execute();
+            // $row=$stmt->fetch();
+            // $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            // //  $_SESSION['id']=$row['id'];
+            //  $_SESSION['user_name']=$row['username'];
             return true;
-            echo "Fdfd";
               print_r($this->conn->errorInfo());
-             
-          
         }else{
           echo "zepy";
           $databaseErrors = $stmt->errorInfo();

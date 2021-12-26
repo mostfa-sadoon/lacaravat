@@ -138,7 +138,13 @@
           $User->phone=$phone;
           $User->password=$password;
           $User->create();
-           header('location: ../index.php');
+          if($_SESSION['product_id']!="")
+          {
+            header('location: ../Receiving_data.php');
+          }else{
+             header('location: ../index.php');  
+          }
+         
       }
   }  
   ?>
