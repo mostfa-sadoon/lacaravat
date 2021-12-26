@@ -57,7 +57,7 @@
         $stmt->bindParam(":phone", $this->phone);
         $stmt->bindParam(":password", $this->password);
         $stmt->bindParam(":created_at", $this->timestamp);
-       if($stmt->execute()){
+        if($stmt->execute()){
         $_SESSION['email']=$this->email; // value here is email
             $query="
             SELECT id ,user_name FROM users WHERE email=?
@@ -71,6 +71,10 @@
              $_SESSION['user_name']=$row['user_name'];
             return true;
             echo "Fdfd";
+            if (!$stmt) {
+              echo "\nPDO::errorInfo():\n";
+              print_r($this->conn->errorInfo());
+          }
         }else{
           echo "zepy";
             return false;
