@@ -71,10 +71,9 @@
              $_SESSION['user_name']=$row['user_name'];
             return true;
             echo "Fdfd";
-            if (!$stmt) {
-              echo "\nPDO::errorInfo():\n";
+          
               print_r($this->conn->errorInfo());
-          }
+          
         }else{
           echo "zepy";
             return false;
