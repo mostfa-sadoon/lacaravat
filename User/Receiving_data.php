@@ -52,7 +52,6 @@ $page_title="cash";
                 $Order_detailes = new Order_detailes($db);
                 foreach($_SESSION['product_id'] as $key=>$product_id)
                 {
-                    echo "Fdf";
                     $Order_detailes->order_id=$Order->last_id;
                     $Order_detailes->user_id=$_SESSION['id']; 
                     $Order_detailes->quantity=$_SESSION['product_quantity'][$key];
