@@ -76,7 +76,7 @@
                                         <div class="float-right">
                                             <?php if(!empty($_SESSION['product_price']))
                                                    {?>
-                                                         <a href="<?php  if(!array_key_exists('email', $_SESSION)) {echo "login/login.php?page_title=Payment_method";}else{echo "payment_method.php?page_title=Payment_method"; } ?>">Finish</a>
+                                                         <a href="<?php  if(!array_key_exists('email', $_SESSION)) {echo "login/login.php?page_title=Payment_method";}else{echo "Payment_method.php?page_title=Payment_method"; } ?>">Finish</a>
                                                    <?PHP
                                                    }
                                             ?> 

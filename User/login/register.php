@@ -1,11 +1,10 @@
 <?php
-  session_start();
-  // core.php holds pagination variables
-  include_once '../config/core.php';  
-  // include database and object files
-  include_once '../config/database.php';
-  include_once '../objects/User.php';
-
+    session_start();
+    // core.php holds pagination variables
+    include_once '../config/core.php';  
+    // include database and object files
+    include_once '../config/database.php';
+    include_once '../objects/User.php';
     if (array_key_exists('email', $_SESSION)) {
      header('location: ../index.php');
     }
@@ -21,7 +20,6 @@
 		return $data;
 	}
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
-   
     $name = test_input($_POST["name"]);
     $username = test_input($_POST["username"]);
     $email=test_input($_POST["email"]);
