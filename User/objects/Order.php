@@ -56,6 +56,12 @@
             $this->last_id = $this->conn->lastInsertId();
             return true;
           }else{
+            if( !empty($databaseErrors) ){  
+              $errorInfo = print_r($databaseErrors, true); 
+              $errorLogMsg = "error info: $errorInfo"; 
+          }
+            print_r($stmt->errorInfo());
+            echo $stmt->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
               return false;
           }   
        }
