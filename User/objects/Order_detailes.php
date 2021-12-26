@@ -35,7 +35,7 @@
           $stmt->bindParam(":product_id", $this->product_id);
           $stmt->bindParam(":created_at", $this->timestamp);
          if($stmt->execute()){
-             echo "zzepy";
+         //    echo "zzepy";
               return true;
           }else{
               echo "mo sadoun";
