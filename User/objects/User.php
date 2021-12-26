@@ -71,13 +71,13 @@
              $_SESSION['user_name']=$row['user_name'];
             return true;
             echo "Fdfd";
-          
               print_r($this->conn->errorInfo());
-          echo    $this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+             
           
         }else{
           echo "zepy";
           print_r($this->conn->errorInfo());
+          echo $this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
             return false;
         }   
      }
