@@ -62,10 +62,7 @@
      {
          $formerr["username"]="the username is already token";
      }
-  
      /*********************end validate username************************** */
-
-
       /*************validate email ****************** */
       if(empty($email))
       {
@@ -74,7 +71,6 @@
       elseif(strlen($email)>30)
       {
         $formerr["email"]="the email is soo long";
-    
       }
       elseif(strlen($email)<4)
       {
@@ -85,8 +81,6 @@
           $formerr["email"]="the email is already token";
       }
       /*********************end validate email************************** */
-
-
     /*************validate phone ****************** */
     if(empty($phone))
     {
@@ -95,7 +89,6 @@
     elseif(strlen($phone)>25)
     {
       $formerr["phone"]="the name is soo long";
-  
     }
     elseif(strlen($phone)<3)
     {
@@ -105,7 +98,6 @@
     {
         $formerr["phone"]="the phone is already token";
     }
-
     /*******************validate password********************* */
           if(empty($password))
           {
@@ -119,8 +111,7 @@
             {
             $formerr["password"]="the password is soo short";
             }
-            else{
-               
+            else{          
                     if($password==$confirm_password)
                     {
                     $password= password_hash($password, PASSWORD_DEFAULT);

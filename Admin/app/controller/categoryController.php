@@ -46,7 +46,6 @@
   }
     if(isset($_POST['add_product']) && $page_title="add_product")
     {
-
     $image_err="";
     $img=$_FILES['img'];
     $imgname=$img['name'];
@@ -79,7 +78,6 @@
        $img=rand(0,10000000000)."_".$imgname;
        move_uploaded_file($imgtmp,"../uploads/product//".$img);
     }
-
     $product = new Product($db);
     $product->name=$_POST['name'];
     $product->description=$_POST['desc'];
