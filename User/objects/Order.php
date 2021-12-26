@@ -61,7 +61,7 @@
               $errorLogMsg = "error info: $errorInfo"; 
           }
             print_r($stmt->errorInfo());
-            echo $stmt->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+
               return false;
           }   
        }
