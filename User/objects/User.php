@@ -37,7 +37,6 @@
            return false;
         }
     }
-
     function create(){
       $query = "INSERT INTO
       " . $this->table_name . "
@@ -74,7 +73,6 @@
             return false;
         }   
      }
-     
      public function login($condation,$value){
        $query="
        select  password ,id from users where ".$condation."=?
@@ -99,8 +97,6 @@
             return false;     
           }
       }   
- 
-
      // used by select drop-down list
     function read(){
       //select all data

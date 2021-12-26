@@ -1,5 +1,11 @@
 <?php
-   include_once('../session.php');
+  session_start();
+  // core.php holds pagination variables
+  include_once '../config/core.php';  
+  // include database and object files
+  include_once '../config/database.php';
+  include_once '../objects/User.php';
+
     if (array_key_exists('email', $_SESSION)) {
      header('location: ../index.php');
     }
@@ -143,8 +149,7 @@
           $User->phone=$phone;
           $User->password=$password;
           $User->create();
-          
-          // header('location: ../index.php');
+           header('location: ../index.php');
       }
   }  
   ?>
