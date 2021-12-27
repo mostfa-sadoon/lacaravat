@@ -1,15 +1,13 @@
 <?php
-include_once 'session.php';  
-// instantiate database 
-$database = new Database();
-$db = $database->getConnection();
-// instantiate object table 
-$category = new Category($db);
-$product = new Product($db);
-$page_title="cash";
-
-
-   //the logic of the form is here
+        include_once 'session.php';  
+        // instantiate database 
+        $database = new Database();
+        $db = $database->getConnection();
+        // instantiate object table 
+        $category = new Category($db);
+        $product = new Product($db);
+        $page_title="cash";
+        //the logic of the form is here
     if(isset($_POST['receving_data']))
     {
         $Order = new Order($db);
@@ -18,16 +16,15 @@ $page_title="cash";
         $Order->phone2=$_POST['phone2'];
         $Order->orderaddress=$_POST['orderaddress'];
         $Order->city=$_POST['city'];
-        $Order->customer_name=$_SESSION['user_name'];
-        $Order->total_price=50;
-        $Order->total_unit=50;
+        $Order->customer_name=$_SESSION['name'];
+        $Order->total_price=  $_SESSION['total_price'];
+        $Order->total_unit=$_SESSION['product_num'];
         if(isset($_POST['payment_method'])=="cash")
         {
             $Order->kind="cash";
         }else{
             $Order->kind="visa";
         }
-         //  echo $Order->kind;
          // this column in database check if customer recive product or not
          $Order->status="false";         
          $accepted;
@@ -50,6 +47,7 @@ $page_title="cash";
             if($Order->create())
             {       
                 $Order_detailes = new Order_detailes($db);
+                // Check if $myList is indeed an array or an object.           
                 foreach($_SESSION['product_id'] as $key=>$product_id)
                 {
                     $Order_detailes->order_id=$Order->last_id;
@@ -64,18 +62,15 @@ $page_title="cash";
                     $product->id=$product_id; 
                     $product->product_quantity=$product_quantity;
                     $product->update_quantity($_SESSION['product_quantity'][$key]);
-                }
-                    unset($_SESSION['product_id']);
-                    unset($_SESSION['product_quantity']);
-                    unset($_SESSION['product_price']); 
-                    unset($_SESSION["product_num"]);
-                    //   $_SESSION['product_id']="";
-                    //   $_SESSION['product_quantity']="";
-                    //   $_SESSION['product_price']="";
+                } 
+                      unset( $_SESSION['product_id']);
+                      unset( $_SESSION['product_quantity']);
+                      unset( $_SESSION['product_price']);
+                      unset( $_SESSION['product_title']);
+                      unset( $_SESSION['product_num']);
             }
-            header("location:paying_process.php");
-        }
-      
+              header("location:paying_process.php");
+        }   
     }
 include_once "template/user_templet.php";
 //to use sweet alert one time

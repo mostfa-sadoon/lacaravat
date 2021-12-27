@@ -59,7 +59,9 @@
         $stmt->bindParam(":created_at", $this->timestamp);
         if($stmt->execute()){
         $_SESSION['id'] = $this->conn->lastInsertId();
-           $_SESSION['email']=$this->email; // value here is email
+        $_SESSION['email']=$this->email; // value here is email
+        $_SESSION['name']=$this->name;
+
             // $query="
             // SELECT id ,user_name FROM users WHERE email=?
             // ";
@@ -87,7 +89,7 @@
      }
      public function login($condation,$value){
        $query="
-       select  password ,id ,username from users where ".$condation."=?
+       select  password ,id ,username,name from users where ".$condation."=?
        ";
        $stmt = $this->conn->prepare($query);
        $stmt->bindParam(1, $value);
@@ -100,6 +102,7 @@
               $_SESSION['email']=$value; // value here is email
               $_SESSION['id']=$row['id'];
               $_SESSION['user_name']=$row['username'];
+              $_SESSION['name']=$row['name'];
               return true;
               } else {
                 return false;     

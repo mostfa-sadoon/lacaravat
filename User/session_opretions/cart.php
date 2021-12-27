@@ -1,11 +1,12 @@
 <?php
 //start cart
-if(!isset($_SESSION['product_title']))
+if(!isset($_SESSION['product_id']))
 {
     $_SESSION['product_id']=[];
     $_SESSION['product_title']=[];
     $_SESSION['product_price']=[];
     $_SESSION['product_quantity']=[];
+    $_SESSION['total_price']="";
 }
 if(!isset($totlaprice))
 {
@@ -43,6 +44,7 @@ if($_POST)
             foreach($_SESSION['product_quantity'] as $key=>$product)
             {
                 $totlaprice+=$product*$_SESSION['product_price'][$key];
+                $_SESSION['total_price']=$totlaprice;
             }
         }
         if(isset($_POST['remove']))
@@ -78,9 +80,11 @@ if($_POST)
             if(!isset($_POST['change']))
             {
                 $totlaprice+=$product*$_SESSION['product_price'][$key];
+                $_SESSION['total_price']=$totlaprice;
             }
         }
-    }      
+    }
+          
     if(isset($_POST['redirect_rout']))
     {
         header('Location:'.$redirect_rout);
