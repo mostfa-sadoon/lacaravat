@@ -334,8 +334,5 @@ class Product{
                         return false;
                     }
                   }
-
-
-
 }
 ?>

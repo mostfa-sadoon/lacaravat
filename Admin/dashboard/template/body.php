@@ -58,6 +58,10 @@ elseif($page_title== "product_detailes")
 //order
 elseif($page_title== "order")
 {
-    include_once 'body/order.php';
+    include_once 'body/order/main.php';
+}
+elseif($page_title== "all_order")
+{
+    include_once 'body/order/all_order.php';
 }
 ?>

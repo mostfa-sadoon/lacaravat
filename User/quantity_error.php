@@ -14,5 +14,4 @@ $page_title="quantity_error";
 $stmt=$Order->read();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 include_once "template/user_templet.php";
-
 ?>

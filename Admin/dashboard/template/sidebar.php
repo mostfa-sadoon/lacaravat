@@ -19,7 +19,7 @@
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">order</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo "product.php?page_title=main_product"; ?>">order</a></li>
+                                <li><a href="<?php echo "order.php?page_title=order"; ?>">order</a></li>
                             </ul>
                         </li>
                 </nav>
