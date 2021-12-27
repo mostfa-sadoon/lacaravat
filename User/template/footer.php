@@ -14,7 +14,7 @@
     <script src="assets/js/imgfix.min.js"></script>
     <script src="assets/js/mixitup.js"></script>
     <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/jquery.nicescroll.min.js"></script>
+    <!-- <script src="assets/js/jquery.nicescroll.min.js"></script> -->
 
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
