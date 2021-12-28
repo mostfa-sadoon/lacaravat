@@ -19,11 +19,11 @@
            <div class="text-center">
                 <h2>Receiving data</h2>
            </div>                
-           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="mb-5"> 
                <input type="hidden" name="payment_method" value="<?php if(isset($_GET['page_title'])=="cash"){echo "cash";}else{echo "credit";} ?>">
                     <div class="form-group col-12">
                         <label for="exampleInputEmail1">address</label>
-                        <input type="text" name="orderaddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your receving address">
+                        <input type="text" name="orderaddress" class="form-control" value="<?php if(isset($_SESSION['address'])){echo $_SESSION['address'];}?>"id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your receving address">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
                     </div>
                       <div class="form-group col-6">
@@ -33,7 +33,7 @@
                             <div class="row">
                                     <div class="form-group col-6">
                                         <label for="exampleInputPassword1">phone 1</label>
-                                        <input type="text" name="phone1" class="form-control" id="exampleInputPassword1" placeholder="number">
+                                        <input type="text" name="phone1" class="form-control" id="exampleInputPassword1" placeholder="number" value="<?php if(isset($_SESSION['phone1'])){echo $_SESSION['phone1'];} ?>">
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="exampleInputPassword1">phone 2</label>

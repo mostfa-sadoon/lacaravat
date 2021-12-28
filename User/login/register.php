@@ -24,6 +24,7 @@
     $username = test_input($_POST["username"]);
     $email=test_input($_POST["email"]);
 	  $phone= test_input($_POST["phone"]);
+    $address= test_input($_POST["address"]);
     $password = test_input($_POST["password"]);
     $confirm_password = test_input($_POST["confirm_password"]);
     // $gender= test_input($_POST["gender"]);
@@ -40,6 +41,21 @@
     elseif(strlen($name)<3)
     {
       $formerr["name"]="the name is soo short";
+    }
+  /*********************end validate name************************** */
+    /*************validate name ****************** */
+    if(empty($address))
+    {
+       $formerr["address"]="the name can't be empty";
+    }
+    elseif(strlen($address)>50)
+    {
+      $formerr["address"]="the name is soo long";
+  
+    }
+    elseif(strlen($address)<8)
+    {
+      $formerr["address"]="the name is soo short";
     }
   /*********************end validate name************************** */
      /*************validate username ****************** */
@@ -136,9 +152,10 @@
           $User->email=$email;
           $User->username=$username;
           $User->phone=$phone;
+          $User->address=$address;
           $User->password=$password;
           $User->create();
-          if($_SESSION['product_id']!="")
+          if(isset($_SESSION['product_id'])!="")
           {
             header('location: ../Receiving_data.php');
           }else{
@@ -185,6 +202,11 @@
 					<div class="form-wrapper">
 						<input type="text" placeholder="Email Address" name="email" class="form-control"  value="<?php if(isset($email)){echo $email;} ?>" required>
 						<p class="alert-danger"><?php if(isset($formerr['email'])){echo  $formerr["email"]; } ?></p>
+						<i class="zmdi zmdi-email"></i>
+					</div>
+          <div class="form-wrapper">
+						<input type="text" placeholder="your address" name="address" class="form-control"  value="<?php if(isset($address)){echo $address;} ?>" required>
+						<p class="alert-danger"><?php if(isset($formerr['address'])){echo  $formerr["address"]; } ?></p>
 						<i class="zmdi zmdi-email"></i>
 					</div>
 					<div class="form-wrapper">
