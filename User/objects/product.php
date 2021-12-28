@@ -312,7 +312,7 @@ class Product{
                     $stmt->bindParam(1, $this->id);
                     $stmt->execute();
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                      $this->quantity = $row['quantity'];
+                     $this->quantity = $row['quantity'];
                   }
                   public function update_quantity($quantity)
                   {

@@ -26,16 +26,12 @@
         $query = "SELECT*
         FROM
         " . $this->table_name . " 
-      
-      
             ";
             $stmt = $this->conn->prepare( $query );
-            $stmt->execute();
         if($stmt->execute())
         {
             return $stmt;
         }else{
-            
             print_r($stmt->errorInfo());
             return false;
         }
@@ -76,12 +72,29 @@
                   *
               FROM
                   " . $this->table_name . "
-                  where user_id=".$this->user_id."
+                  where id=".$this->id."
               ORDER BY
                   id";  
       $stmt = $this->conn->prepare( $query );
-      $stmt->execute();
-      return $stmt;
+      if($stmt->execute())
+       {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $this->id = $row['id'];
+        $this->user_id = $row['user_id'];
+        $this->status = $row['status'];
+        $this->created_at = $row['created_at'];
+        $this->phone1 = $row['phone1'];
+        $this->phone2 = $row['phone2'];
+        $this->kind = $row['kind'];
+        $this->city = $row['city'];
+        $this->customer_name = $row['customer_name'];
+        $this->total_unit = $row['total_unit'];
+        $this->total_price = $row['total_price'];
+         return true;
+       }else{
+         return false;
+       }
+     
     }
   // used to read category name by its ID
     function readName(){      

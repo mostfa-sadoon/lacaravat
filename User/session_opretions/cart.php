@@ -3,9 +3,10 @@
 if(!isset($_SESSION['product_id']))
 {
     $_SESSION['product_id']=[];
-    $_SESSION['product_title']=[];
+    $_SESSION['product_name']=[];
     $_SESSION['product_price']=[];
     $_SESSION['product_quantity']=[];
+   
     $_SESSION['total_price']="";
 }
 if(!isset($totlaprice))
@@ -23,7 +24,7 @@ if($_POST)
             }else{
                 $_SESSION["product_num"] = $_POST['quantity'];
             }
-            array_push($_SESSION['product_title'],$_POST['title']);
+            array_push($_SESSION['product_name'],$_POST['name']);
             array_push($_SESSION['product_price'],$_POST['price']);
             array_push($_SESSION['product_quantity'],$_POST['quantity']);
             array_push($_SESSION['product_id'],$_POST['product_id']);
@@ -39,7 +40,6 @@ if($_POST)
             $all_product_num= $_SESSION['product_quantity'][$index]-$old_product_quantity;
             $_SESSION['product_num']+=  $all_product_num;
             // end number of item
-
             // all price of item
             foreach($_SESSION['product_quantity'] as $key=>$product)
             {
@@ -52,7 +52,7 @@ if($_POST)
             $index=$_POST['index'];
             $old_product_quantity= $_SESSION['product_quantity'][$index];
             unset( $_SESSION['product_quantity'][$index]);
-            unset( $_SESSION['product_title'][$index]);
+            unset( $_SESSION['product_name'][$index]);
             unset( $_SESSION['product_id'][$index]);
             unset( $_SESSION['product_price'][$index]);
             $_SESSION['product_num']-=  $old_product_quantity;
@@ -71,8 +71,7 @@ if($_POST)
                 $redirect_rout ="product_category.php?cat_id=".$cat_id;
             } 
         }
-}
-
+ }
     if(isset($_SESSION['product_quantity'])!="")
     {
         foreach($_SESSION['product_quantity'] as $key=>$product)

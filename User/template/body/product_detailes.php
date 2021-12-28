@@ -62,7 +62,7 @@
                            <input type="hidden" name="product_id" value="<?php echo $product->id; ?>">
                            <input type="hidden" name="redirect_rout" value="<?php echo $_GET['page_title']; ?>">
                            <input type="hidden" name="cat_id" value="<?php echo $product->cat_id; ?>">
-                            <input type="hidden" name="title" value="<?php echo $product->name; ?>"> </input>
+                            <input type="hidden" name="name" value="<?php echo $product->name; ?>"> </input>
                             <input type="hidden" name="price" value="<?php echo $product->price; ?>"> </input>
                             <div class="form-group">
                                 <p><?php echo $product->desc ?></p>

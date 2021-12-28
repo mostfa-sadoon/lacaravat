@@ -17,7 +17,6 @@
      public $total_unit;
      public $total_price;
      public $last_id;
-
      public function __construct($db){
        $this->conn=$db;
      }

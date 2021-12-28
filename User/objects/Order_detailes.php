@@ -9,6 +9,7 @@
      public $order_id;
      public $price;
      public $quantity;
+     public $product_name;
      public $created_at;
      public function __construct($db){
        $this->conn=$db;
@@ -17,7 +18,7 @@
         $query = "INSERT INTO
         " . $this->table_name . "
          SET
-        order_id=:order_id,product_id=:product_id,price=:price, quantity=:quantity,created_at=:created_at";
+        order_id=:order_id,product_name=:product_name,product_id=:product_id,total_price=:total_price,price=:price, quantity=:quantity,created_at=:created_at";
         $stmt = $this->conn->prepare($query);
          // to get time-stamp for 'created' field
          $this->timestamp = date('Y-m-d H:i:s');
@@ -25,6 +26,8 @@
          $this->order_id=htmlspecialchars(strip_tags($this->order_id));
          $this->product_id=htmlspecialchars(strip_tags($this->product_id));
          $this->price=htmlspecialchars(strip_tags($this->price));
+         $this->total_price=htmlspecialchars(strip_tags($this->total_price));
+         $this->product_name=htmlspecialchars(strip_tags($this->product_name));
          $this->quantity=htmlspecialchars(strip_tags($this->quantity));
          $this->created_at=htmlspecialchars(strip_tags($this->created_at));
           // bind values 
@@ -32,7 +35,9 @@
           $stmt->bindParam(":order_id", $this->order_id);
           $stmt->bindParam(":price", $this->price);
           $stmt->bindParam(":quantity", $this->quantity);
+          $stmt->bindParam(":product_name", $this->product_name);
           $stmt->bindParam(":product_id", $this->product_id);
+          $stmt->bindParam(":total_price", $this->total_price);
           $stmt->bindParam(":created_at", $this->timestamp);
          if($stmt->execute()){
          //    echo "zzepy";
@@ -64,6 +69,5 @@
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       $this->name = $row['name'];
     }
-
  }
 ?>

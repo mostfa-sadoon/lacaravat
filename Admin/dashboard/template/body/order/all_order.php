@@ -19,6 +19,7 @@
                             <th>kind</th>
                             <th>phase</th>
                             <th>city</th>
+                            <th>date</th>
                             <th>measure</th>
                         </tr>
                     </thead>
@@ -40,7 +41,8 @@
                                     <td><?php echo $kind; ?></td>
                                     <td><?php echo $phase; ?></td>
                                     <td><?php echo $city; ?></td>   
-                                    <td><a href="" class="btn btn-success text-light"> <?php if($status=="false"){echo '<i class="fas fa-edit"></i> ';}else{echo'<i class="fas fa-check-circle"></i>';} ?></a></td>
+                                    <td><?php echo $created_at; ?></td>   
+                                    <td><a href="<?php echo "order.php?page_title=order_action&order_id=".$id."" ?>" class="btn btn-success text-light"> <?php if($status=="false"){echo '<i class="fas fa-edit"></i> ';}else{echo'<i class="fas fa-check-circle"></i>';} ?></a></td>
                                 </tr>
                             <?php
                                 $count++;

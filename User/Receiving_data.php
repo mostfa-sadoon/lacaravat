@@ -34,6 +34,7 @@
             $product = new Product($db);
             $product->id=$product_id;
             $product->check_quantity();
+            echo $product->quantity;
             if($product->quantity >= $_SESSION['product_quantity'][$key])
             {
             $accepted=true;                      
@@ -52,8 +53,10 @@
                 {
                     $Order_detailes->order_id=$Order->last_id;
                     $Order_detailes->user_id=$_SESSION['id']; 
+                    $Order_detailes->product_name=$_SESSION['product_name'][$key]; 
                     $Order_detailes->quantity=$_SESSION['product_quantity'][$key];
                     $Order_detailes->price=$_SESSION['product_price'][$key];
+                    $Order_detailes->total_price=$_SESSION['product_quantity'][$key]*$_SESSION['product_price'][$key];
                     $Order_detailes->product_id=$product_id;
                     if($Order_detailes->create())
                     {
@@ -66,10 +69,10 @@
                       unset( $_SESSION['product_id']);
                       unset( $_SESSION['product_quantity']);
                       unset( $_SESSION['product_price']);
-                      unset( $_SESSION['product_title']);
+                      unset( $_SESSION['product_name']);
                       unset( $_SESSION['product_num']);
             }
-              header("location:paying_process.php");
+             header("location:paying_process.php");
         }   
     }
 include_once "template/user_templet.php";

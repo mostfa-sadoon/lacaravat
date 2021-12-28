@@ -25,8 +25,6 @@
       $stmt->execute();
       return $stmt;
   }
-
-
      // used to read category name by its ID
 function readName(){
       
@@ -38,7 +36,6 @@ function readName(){
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
   $this->name = $row['name'];
 }
-
 
  }
 ?>

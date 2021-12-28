@@ -25,7 +25,7 @@
                         <div class="row">   
                             
                              <?php
-                                 foreach($_SESSION['product_title'] as $key =>$product)
+                                 foreach($_SESSION['product_name'] as $key =>$product)
                                  {
                                      ?>
                                          <div class="image-thumb col-md-2">
