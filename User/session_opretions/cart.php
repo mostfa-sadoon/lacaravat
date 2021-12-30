@@ -7,7 +7,7 @@ if(!isset($_SESSION['product_id']))
     $_SESSION['product_price']=[];
     $_SESSION['product_quantity']=[];
    
-    $_SESSION['total_price']="";
+    $_SESSION['total_price']=[];
 }
 if(!isset($totlaprice))
 {
