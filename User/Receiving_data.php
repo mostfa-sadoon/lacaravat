@@ -73,7 +73,7 @@
             }
              $_SESSION['success']="you puy product successfully";
           //   echo $Order->last_id;
-              header("location: order.php");
+             header("location:order.php?id=".$Order->last_id);
         }   
     }
 include_once "template/user_templet.php";
