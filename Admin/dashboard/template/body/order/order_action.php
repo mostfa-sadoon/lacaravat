@@ -29,32 +29,7 @@
                                 <div class="form-group col-md-9 d-flex">
                                     <input type="text" value="<?php echo $order->customer_name;?>" class="form-control" disabled> 
                                 </div>
-                                            <?php
-                                                 while ($row = $Orderdetailes->fetch(PDO::FETCH_ASSOC)){
-                                                     extract($row);?>
-                                                <div class="row mt-2">
-                                                        <div class="col-md-6">
-                                                            <div class="row">
-                                                                    <div class="col-md-4">product name</div>
-                                                                    <div class="col-md-8"><input type="text" value="<?php echo $product_name; ?>" class="form-control" disabled> </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="row">
-                                                                    <div class="col-md-4">qnty</div>
-                                                                    <div class="col-md-8"><input type="number" value="<?php echo $quantity; ?>" class="form-control" disabled> </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                        <div class="row">
-                                                                    <div class="col-md-4">price</div>
-                                                                    <div class="col-md-8"><input type="number" value="<?php echo $price; ?>" class="form-control" disabled> </div>
-                                                            </div>
-                                                        </div>
-                                                </div>     
-                                            <?php
-                                            }
-                                            ?>
+                                           
                               
                                    <div class="form-group mt-2  col-md-3 d-flex">
                                     address
