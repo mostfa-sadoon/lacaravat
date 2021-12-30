@@ -42,6 +42,7 @@
          if($stmt->execute()){
                 return true;
           }else{
+              dd(print_r($stmt->errorInfo()));
               return false;
           }   
        }
