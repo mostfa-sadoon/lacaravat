@@ -59,11 +59,11 @@
                     $Order_detailes->product_id=$product_id;
                     if($Order_detailes->create())
                     {
+                        $product = new Product($db);
+                        $product->id=$product_id; 
+                        $product->product_quantity=$product_quantity;
+                        $product->update_quantity($_SESSION['product_quantity'][$key]);
                     }
-                    $product = new Product($db);
-                    $product->id=$product_id; 
-                    $product->product_quantity=$product_quantity;
-                    $product->update_quantity($_SESSION['product_quantity'][$key]);
                 } 
                       unset( $_SESSION['product_id']);
                       unset( $_SESSION['product_quantity']);
