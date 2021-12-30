@@ -56,15 +56,15 @@ elseif($page_title== "product_detailes")
     include_once 'body/product_category.php';
 }
 //order
-elseif($page_title== "order")
+elseif($page_title=="order")
 {
     include_once 'body/order/main.php';
 }
-elseif($page_title== "all_order")
+elseif($page_title=="all_order")
 {
     include_once 'body/order/all_order.php';
 }
-elseif($page_title== "order_action")
+elseif($page_title=="order_action")
 {
     include_once 'body/order/order_action.php';
 }

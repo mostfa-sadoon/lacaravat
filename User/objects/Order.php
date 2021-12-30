@@ -69,11 +69,11 @@
         //select all data
         $query = "SELECT
                     *
-                FROM
-                    " . $this->table_name . "
-                    where user_id=".$this->user_id." and id=".$this->id."
-                ORDER BY
-                    id";  
+            FROM
+                " . $this->table_name . "
+                where user_id=".$this->user_id." and id=".$this->id."
+            ORDER BY
+                id";  
         $stmt = $this->conn->prepare( $query );
         if($stmt->execute())
         {   
