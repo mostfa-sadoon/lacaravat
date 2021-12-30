@@ -3,8 +3,7 @@ if($page_title=="dashboard")
 {
     include_once 'body/dashboard.php';
 }
-
-   // category 
+// category 
 elseif($page_title=="category")
 {
     include_once 'body/category/category.php';
