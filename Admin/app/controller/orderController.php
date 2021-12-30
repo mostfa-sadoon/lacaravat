@@ -4,9 +4,9 @@ if(isset($_GET['page_title']) == "order_action" && isset($_GET['order_id']))
 {
     $order= new Order($db);
     $order->id=$_GET['order_id'];
-    $Orderdetailes= new Orderdetailes($db);
-    $Orderdetailes->order_id=$_GET['order_id'];
-   $rows=$Orderdetailes->readorderdetailes();
+    $orderdetailes= new Orderdetailes($db);
+    $orderdetailes->order_id=$_GET['order_id'];
+    $rows=$orderdetailes->readorderdetailes();
     $order->read();
 }
 if(isset($_POST['accepted']))
