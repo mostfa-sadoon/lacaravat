@@ -32,7 +32,7 @@ if(isset($_POST['cancel']))
     $order->phase="cancel";
     $order->update();
     // in this function we use join
-    $orderdetailes= $order->orderproduct();
+    $Orderdetailes= $order->orderproduct();
     $product=new product($db);
     foreach($orderdetailes as $key=>$row)
     {
