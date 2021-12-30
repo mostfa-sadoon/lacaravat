@@ -30,7 +30,7 @@
                                     <input type="text" value="<?php echo $order->customer_name;?>" class="form-control" disabled> 
                                 </div>
                                             <?php
-                                                 while ($row = $Orderdetailes->fetch(PDO::FETCH_ASSOC)){
+                                                 while ($row = $orderdetailes->fetch(PDO::FETCH_ASSOC)){
                                                      extract($row);?>
                                                 <div class="row mt-2">
                                                         <div class="col-md-6">
