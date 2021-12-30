@@ -34,7 +34,6 @@
             $product = new Product($db);
             $product->id=$product_id;
             $product->check_quantity();
-            echo $product->quantity;
             if($product->quantity >= $_SESSION['product_quantity'][$key])
             {
             $accepted=true;                      
