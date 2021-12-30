@@ -40,10 +40,8 @@
           $stmt->bindParam(":total_price", $this->total_price);
           $stmt->bindParam(":created_at", $this->timestamp);
          if($stmt->execute()){
-         //    echo "zzepy";
-              return true;
+                return true;
           }else{
-              echo "mo sadoun";
               return false;
           }   
        }
