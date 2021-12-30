@@ -24,6 +24,6 @@ $from_record_num = ($records_per_page * $page) - $records_per_page;
 $orders=$order->orders($records_per_page,$from_record_num);
 $page_url = "products.php?";
 $total_rows=$order->countall();
-include_once "app/controller/OrderController.php";
+include_once " app/controller/orderController.php ";
 include_once "dashboard/template/admin_template.php";
 ?>
