@@ -75,9 +75,14 @@
                 ORDER BY
                     id";  
         $stmt = $this->conn->prepare( $query );
-        $stmt->execute();
-        $order=$stmt->fetch();
-        return $order;
+        if($stmt->execute())
+        {   
+          $order=$stmt->fetch();
+          return $order;
+        }else{
+          dd(print_r($stmt->errorInfo()));
+        }
+      
       }
        // inner join relation
         function orderproduct()
