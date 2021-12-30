@@ -9,6 +9,7 @@
                 <table class="table table-striped table-bordered" id="editable-datatable">
                     <thead>
                         <tr>
+                            <th>id</th>
                             <th>name</th>
                             <th>address</th>
                             <th>total price</th>
@@ -30,7 +31,7 @@
                             while ($row = $orders->fetch(PDO::FETCH_ASSOC)){
                                 extract($row);?>
                                 <tr id="<?php echo $count; ?>" class="gradeX">
-                                    
+                                    <td><?php echo $id; ?></td>
                                     <td><?php echo $customer_name; ?></td>
                                     <td><?php echo $orderaddress; ?></td>
                                     <td><?php echo $total_price; ?></td>

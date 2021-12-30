@@ -72,7 +72,7 @@
                       unset( $_SESSION['product_name']);
                       unset( $_SESSION['product_num']);
             }
-             $_SESSION['success']="product add to cart successfuly";
+             $_SESSION['success']="you puy product successfully";
              header("location:order.php?id=".$Order->last_id);
         }   
     }

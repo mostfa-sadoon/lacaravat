@@ -34,6 +34,18 @@
                     });
             </script>
         <?php
+        }elseif(isset($_SESSION['success']) &&  $_SESSION['success']=="you puy product successfully")
+        {?>
+         <script>
+                Swal.fire({
+                    position: 'top-end',
+                    type: 'success',
+                    title: 'you puy product successfuly',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+            </script>
+        <?php
         }
         ?>
     <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
