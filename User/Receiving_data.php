@@ -31,17 +31,16 @@
         // here we check if quantity is provides
         foreach($_SESSION['product_id'] as $key=>$product_id)
         {
-            $product = new Product($db);
+            $product=new Product($db);
             $product->id=$product_id;
             $product->check_quantity();
-            // if($product->quantity >= $_SESSION['product_quantity'][$key])
-            // {
-            // $accepted=true;                      
-            // }else{
-            // $accepted=false;
-            //  header("location:quantity_error.php");
-            // }
-              $accepted=true;   
+            if($product->quantity >= $_SESSION['product_quantity'][$key])
+            {
+            $accepted=true;                      
+            }else{
+            $accepted=false;
+             header("location:quantity_error.php");
+            }
         }
         if($accepted==true)
         {
@@ -71,10 +70,11 @@
                       unset( $_SESSION['product_price']);
                       unset( $_SESSION['product_name']);
                       unset( $_SESSION['product_num']);
+                      $_SESSION['success']="you puy product successfully";
+                      $id=$Order->last_id;
+                      header("location:order.php?id=".$id);
             }
-             $_SESSION['success']="you puy product successfully";
-             $id=$Order->last_id;
-             header("location:order.php?id=".$id);
+           
         }   
     }
 include_once "template/user_templet.php";
