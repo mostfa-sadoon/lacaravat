@@ -27,10 +27,10 @@
                         <?php
                             $count=1;
                             if($total_rows>0){
-                                echo $total_rows;
                             while ($row = $orders->fetch(PDO::FETCH_ASSOC)){
                                 extract($row);?>
                                 <tr id="<?php echo $count; ?>" class="gradeX">
+                                    
                                     <td><?php echo $customer_name; ?></td>
                                     <td><?php echo $orderaddress; ?></td>
                                     <td><?php echo $total_price; ?></td>
@@ -42,7 +42,21 @@
                                     <td><?php echo $phase; ?></td>
                                     <td><?php echo $city; ?></td>   
                                     <td><?php echo $created_at; ?></td>   
-                                    <td><a href="<?php echo "order.php?page_title=order_action&order_id=".$id."" ?>" class="btn btn-success text-light"> <?php if($status=="false"){echo '<i class="fas fa-edit"></i> ';}else{echo'<i class="fas fa-check-circle"></i>';} ?></a></td>
+                                    <td>
+                                       <?php if($phase =="phase1" || $phase == "phase2")
+                                       {?>
+                                              <a href="<?php echo "order.php?page_title=order_action&order_id=".$id."" ?>" class="btn btn-success text-light"> <?php if($status=="false"){echo '<i class="fas fa-edit"></i> ';}else{echo'<i class="fas fa-check-circle"></i>';} ?></a></td>
+                                       <?php
+                                       }elseif($phase =="phase3"){?>
+                                            <a href="<?php echo "order.php?page_title=order_action&order_id=".$id."" ?>" class="btn btn-primary text-light"> <?php if($status=="false"){echo '<i class="fas fa-edit"></i> ';}else{echo'<i class="fas fa-check-circle"></i>';} ?></a></td>        
+                                       <?php
+                                       }elseif($phase =="cancel"){?>
+                                         <a href="<?php echo "order.php?page_title=order_action&order_id=".$id."" ?>" class="btn btn-danger text-light"> <?php if($status=="false"){echo '<i class="fas fa-edit"></i> ';}else{echo'<i class="fas fa-check-circle"></i>';} ?></a></td>           
+                                       <?php
+                                       }
+                                       
+                                       ?>    
+                                 
                                 </tr>
                             <?php
                                 $count++;

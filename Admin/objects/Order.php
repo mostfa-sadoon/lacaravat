@@ -17,6 +17,10 @@
      public $total_unit;
      public $total_price;
      public $last_id;
+     public $phase;
+     public $delivery_man;
+     public $delivery_number;
+     public $accepted_date;
 
      public function __construct($db){
        $this->conn=$db;
@@ -26,8 +30,9 @@
         $query = "SELECT*
         FROM
         " . $this->table_name . " 
-            ";
-            $stmt = $this->conn->prepare( $query );
+             order by id asc
+        ";
+        $stmt = $this->conn->prepare( $query );
         if($stmt->execute())
         {
             return $stmt;
@@ -35,7 +40,6 @@
             print_r($stmt->errorInfo());
             return false;
         }
-        return $stmt;
      }
       public function countall()
       {
@@ -63,8 +67,22 @@
           $count=$stmt->rowcount();
           return $count;
       }
-
-
+     public function update()
+    {
+      $query="   UPDATE " . $this->table_name . " SET phase=:phase,accepted_date=:accepted_date  where id=:id";
+      $stmt=$this->conn->prepare($query);
+      $this->timestamp = date('Y-m-d H:i:s');
+      $this->name=htmlspecialchars(strip_tags($this->phase));
+      $stmt->bindParam(":accepted_date", $this->timestamp);
+      $stmt->bindParam(':phase', $this->phase);
+      $stmt->bindParam(':id', $this->id);
+      if($stmt->execute()){
+        return true;
+        }else{
+          print_r($stmt->errorInfo());
+          return false;
+        }   
+    }
     // used by select drop-down list
     function read(){
       //select all data
@@ -73,8 +91,8 @@
               FROM
                   " . $this->table_name . "
                   where id=".$this->id."
-              ORDER BY
-                  id";  
+                   ORDER BY
+                   id asc";  
       $stmt = $this->conn->prepare( $query );
       if($stmt->execute())
        {
@@ -87,14 +105,15 @@
         $this->phone2 = $row['phone2'];
         $this->kind = $row['kind'];
         $this->city = $row['city'];
+        $this->phase = $row['phase'];
         $this->customer_name = $row['customer_name'];
         $this->total_unit = $row['total_unit'];
         $this->total_price = $row['total_price'];
+        $this->accepted_date = $row['accepted_date'];
          return true;
        }else{
          return false;
        }
-     
     }
   // used to read category name by its ID
     function readName(){      
@@ -106,5 +125,28 @@
       $this->name = $row['name'];
     }
 
+    // inner join relation
+    function orderproduct()
+    {
+      $query="select
+      product_id,quantity,price
+      from ".$this->table_name."  o
+      inner join orderproducts  d
+      on 
+      o.id=d.order_id
+      where 
+      order_id=".$this->id."
+      ";
+      $stmt = $this->conn->prepare( $query );
+      $stmt->bindParam(':id',$this->id);
+      if($stmt->execute())
+      {
+        $rows=$stmt->fetchall();
+        return $rows;
+      }else{
+         die(print_r($stmt->errorInfo()));
+          return false;
+      }
+    }
  }
 ?>

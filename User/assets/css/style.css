@@ -282,7 +282,9 @@ header
     transition: all .5s ease 0s;
 }
 
+
 .header-area .main-nav {
+  
     min-height: 80px;
     background: transparent;
 }
@@ -468,6 +470,7 @@ header
 }
 
 .header-area.header-sticky {
+    background-color: #3f3d3d;
     min-height: 80px;
 }
 

@@ -6,11 +6,17 @@ $db = $database->getConnection();
 // instantiate object table 
 $category = new Category($db);
 $product = new Product($db);
-$Order_detailes = new Order_detailes($db);
+if(isset($_GET['page_title']))
+{
+$page_title=$_GET['page_title'];
+}else{
+$page_title="order";
+}
 $Order = new Order($db);
 $Order->user_id=$_SESSION['id'];
-$page_title="paying_process";
-$stmt=$Order->read();
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$Order->id=$_GET['id'];
+$order=$Order->read();
+$products= $Order->orderproduct();
 include_once "template/user_templet.php";
+$_SESSION['success']="";
 ?>

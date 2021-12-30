@@ -64,29 +64,56 @@
               return false;
           }   
        }
-    // used by select drop-down list
-    function read(){
-      //select all data
-      $query = "SELECT
-                  *
-              FROM
-                  " . $this->table_name . "
-                  where user_id=".$this->user_id."
-              ORDER BY
-                  id";  
-      $stmt = $this->conn->prepare( $query );
-      $stmt->execute();
-      return $stmt;
-    }
-  // used to read category name by its ID
-    function readName(){      
-      $query = "SELECT name FROM " . $this->table_name . " WHERE id = :id limit 0,1";
-      $stmt = $this->conn->prepare( $query );
-      $stmt->bindParam(':id',$this->id);
-      $stmt->execute();
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      $this->name = $row['name'];
-    }
+
+      // used by select drop-down list
+      function read(){
+        //select all data
+        $query = "SELECT
+                    *
+                FROM
+                    " . $this->table_name . "
+                    where user_id=".$this->user_id." and id=".$this->id."
+                ORDER BY
+                    id";  
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+        $order=$stmt->fetch();
+        return $order;
+      }
+       // inner join relation
+        function orderproduct()
+        {
+          $query="select*
+          from ".$this->table_name."  o
+          inner join orderproducts  d
+          on 
+          o.id=d.order_id
+          where 
+          order_id=".$this->id."
+          ";
+          $stmt = $this->conn->prepare( $query );
+          $stmt->bindParam(':id',$this->id);
+          if($stmt->execute())
+          {
+            $rows=$stmt->fetchall();
+            return $rows;
+          }else{
+            die(print_r($stmt->errorInfo()));
+              return false;
+          }
+        }
+
+
+
+    // used to read category name by its ID
+      function readName(){      
+        $query = "SELECT name FROM " . $this->table_name . " WHERE id = :id limit 0,1";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->bindParam(':id',$this->id);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $this->name = $row['name'];
+      }
 
  }
 ?>

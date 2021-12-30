@@ -11,6 +11,8 @@ class  Orderdetailes{
     public $quantity;
     public $total_price;
     public $last_id;
+    public $delivery_man;
+    public $delivery_number;
     public function __construct($db){
       $this->conn=$db;
     }
@@ -20,7 +22,7 @@ class  Orderdetailes{
           FROM ".$this->table_name."
          WHERE order_id = :order_id
           ";
-          $stmt = $this->conn->prepare($query);
+          $stmt=$this->conn->prepare($query);
           $stmt->bindParam(':order_id',$this->order_id);
           if($stmt->execute())
           {

@@ -284,5 +284,25 @@ class Product{
                 
                     return $row['total_rows'];
                 }
+                public function update_quantity($quantity)
+                {
+                  $query="
+                  UPDATE 
+                  " . $this->table_name . "
+                  SET quantity = quantity + ".$quantity." 
+                  where
+                  id=:id
+                  ";
+                  $stmt=$this->conn->prepare($query);
+                  // posted values
+                  $this->id=htmlspecialchars(strip_tags($this->id));
+                  $stmt->bindParam(':id', $this->id);
+                  if($stmt->execute()){
+                      return true;
+                  }
+                  else{
+                      return false;
+                  }
+                }
 }
 ?>

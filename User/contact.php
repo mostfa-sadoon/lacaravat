@@ -7,6 +7,5 @@ $db = $database->getConnection();
 $category = new Category($db);
 $product = new Product($db);
 $page_title="contact";
-
 include_once "template/user_templet.php";
 ?>

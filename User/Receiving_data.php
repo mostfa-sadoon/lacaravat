@@ -72,10 +72,11 @@
                       unset( $_SESSION['product_name']);
                       unset( $_SESSION['product_num']);
             }
-             header("location:paying_process.php");
+             $_SESSION['success']="product add to cart successfuly";
+             header("location:order.php?id=".$Order->last_id);
         }   
     }
 include_once "template/user_templet.php";
 //to use sweet alert one time
-$_SESSION['success']="";
+
 ?> 

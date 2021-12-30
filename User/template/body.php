@@ -36,9 +36,9 @@ elseif($page_title=="cash")
 {
     include_once 'body/receving_data.php';
 }
-elseif($page_title=="paying_process")
+elseif($page_title=="order")
 {
-    include_once 'body/paying_process.php';
+    include_once 'body/order.php';
 }
 elseif($page_title=="quantity_error")
 {

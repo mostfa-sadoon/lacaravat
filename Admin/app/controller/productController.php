@@ -161,5 +161,4 @@
     $redirect=$_GET['redirect'];
     header("location:product.php?page_title=".$redirect);
   }
-
 ?>
