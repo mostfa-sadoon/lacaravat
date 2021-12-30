@@ -79,5 +79,4 @@
     }
 include_once "template/user_templet.php";
 //to use sweet alert one time
-
 ?> 
