@@ -12,6 +12,7 @@
                            <th scope="col">quantity</th>
                            <th scope="col">status</th>
                            <th scope="col">price</th>
+                           <th scope="col">total_price</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -22,6 +23,7 @@
                                  <td><?php echo $product['product_name'] ?></td>
                                  <td><?php echo $product['quantity'] ?></td>
                                  <td>paid</td>
+                                 <td><?php echo $product['price'] ?></td> 
                                  <td><?php echo $product['total_price'] ?></td> 
                               </tr>   
                            <?php
@@ -30,6 +32,7 @@
                         
                         
                         <tr>
+                              <td></td>
                               <td></td>
                               <td></td>
                               <td></td>
