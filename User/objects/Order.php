@@ -59,8 +59,7 @@
               $errorInfo = print_r($databaseErrors, true); 
               $errorLogMsg = "error info: $errorInfo"; 
           }
-            print_r($stmt->errorInfo());
-
+            // print_r($stmt->errorInfo());
               return false;
           }   
        }
