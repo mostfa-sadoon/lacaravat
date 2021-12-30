@@ -72,7 +72,7 @@
                       unset( $_SESSION['product_num']);
             }
              $_SESSION['success']="you puy product successfully";
-             header("location:order.php?id=".$Order->last_id);
+             header("location:Order.php?id=".$Order->last_id);
         }   
     }
 include_once "template/user_templet.php";
