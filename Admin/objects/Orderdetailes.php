@@ -28,7 +28,7 @@ class  Orderdetailes{
           {
             return $stmt;
            }else{
-              print_r($stmt->errorInfo());
+              die(print_r($stmt->errorInfo()));
               return false;
           }
       }

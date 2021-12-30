@@ -21,8 +21,7 @@ elseif($page_title=="add_product_category")
 {
     include_once 'body/category/add_product.php';
 }
-
-  //product
+//product
 elseif($page_title=="main_product")
 {
     include_once 'body/product/main_product.php';
