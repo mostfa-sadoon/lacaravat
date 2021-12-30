@@ -34,13 +34,14 @@
             $product = new Product($db);
             $product->id=$product_id;
             $product->check_quantity();
-            if($product->quantity >= $_SESSION['product_quantity'][$key])
-            {
-            $accepted=true;                      
-            }else{
-            $accepted=false;
-             header("location:quantity_error.php");
-            }
+            // if($product->quantity >= $_SESSION['product_quantity'][$key])
+            // {
+            // $accepted=true;                      
+            // }else{
+            // $accepted=false;
+            //  header("location:quantity_error.php");
+            // }
+              $accepted=true;   
         }
         if($accepted==true)
         {
@@ -72,7 +73,7 @@
                       unset( $_SESSION['product_num']);
             }
              $_SESSION['success']="you puy product successfully";
-              $id=$Order->last_id;
+             $id=$Order->last_id;
              header("location:order.php?id=".$id);
         }   
     }
