@@ -36,7 +36,7 @@
           FROM
           " . $this->table_name . " 
               ORDER BY
-              id ASC
+              id DESC
                 LIMIT
               {$from_record_num},{$records_per_page}
           ";
@@ -55,7 +55,7 @@
              where
               ".$condation."".$condation_value."
               ORDER BY
-              id ASC
+              id DESC
                 LIMIT
               {$from_record_num},{$records_per_page}
           ";
@@ -75,7 +75,6 @@
           select id
           FROM
           " . $this->table_name . "
-
           ";
           $stmt = $this->conn->prepare( $query );
           $stmt->execute();
