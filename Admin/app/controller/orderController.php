@@ -44,4 +44,17 @@ if(isset($_POST['cancel']))
     }
 }
 
+if($page_title=="recentreceved")
+{
+    $orders=$order->orders($from_record_num,$records_per_page,"phase","='phase1'");
+    $page_url = "order.php?page_title=recentreceved&";
+}
+if($page_title=="takeactioncount")
+{
+    $orders=$order->orders($from_record_num,$records_per_page,"phase","!='phase1'");
+    $page_url = "order.php?page_title=recentreceved&";
+}
+
+
+
 ?>

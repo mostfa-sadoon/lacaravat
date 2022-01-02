@@ -70,4 +70,12 @@ elseif($page_title=="waiting_order")
 {
     include_once 'body/order/waiting_order.php';
 }
+elseif($page_title=="recentreceved")
+{
+    include_once 'body/order/recent_receved.php';
+}
+elseif($page_title=="takeactioncount")
+{
+    include_once 'body/order/take_action.php';
+}
 ?>

@@ -24,24 +24,49 @@
      public function __construct($db){
        $this->conn=$db;
      }
-     public function orders($from_record_num, $records_per_page)
+     public function orders($from_record_num, $records_per_page, $condation=null, $condation_value=null)
      {
-    //   die(print_r($from_record_num));
-        $query = "SELECT*
-        FROM
-        " . $this->table_name . " 
-             ORDER BY
-             id ASC
-              LIMIT
-             {$from_record_num},{$records_per_page}
-        ";
-        $stmt = $this->conn->prepare( $query );
-        if($stmt->execute())
+       if($condation!=null)
+       {
+      //  die(print_r("gfgf"));
+       }
+        if($condation==null)
         {
-            return $stmt;
+          $query = "SELECT*
+          FROM
+          " . $this->table_name . " 
+              ORDER BY
+              id ASC
+                LIMIT
+              {$from_record_num},{$records_per_page}
+          ";
+          $stmt = $this->conn->prepare( $query );
+          if($stmt->execute())
+          {
+              return $stmt;
+          }else{
+              print_r($stmt->errorInfo());
+              return false;
+          }
         }else{
-            print_r($stmt->errorInfo());
-            return false;
+          $query = "SELECT*
+          FROM
+          " . $this->table_name . " 
+             where
+              ".$condation."".$condation_value."
+              ORDER BY
+              id ASC
+                LIMIT
+              {$from_record_num},{$records_per_page}
+          ";
+          $stmt = $this->conn->prepare( $query );
+          if($stmt->execute())
+          {
+              return $stmt;
+          }else{
+            die( print_r($stmt->errorInfo()));
+              return false;
+          }
         }
      }
       public function countall()
