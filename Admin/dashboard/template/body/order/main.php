@@ -18,8 +18,8 @@
                 <div class="d-flex no-block">
                     <div class="m-r-20 align-self-center"><img src="dashboard/assets/images/icon/expense-w.png" alt="Income" /></div>
                     <div class="align-self-center">
-                        <h6 class="text-white m-t-10 m-b-0"><a href="#" class="text-white" >waiting order</a></h6>
-                        <h2 class="m-t-0 text-white"><a href="#" class="text-white"><?php echo  $waitingorder; ?></a></h2></div>
+                        <h6 class="text-white m-t-10 m-b-0"><a href="<?php echo "order.php?page_title=waiting_order"; ?>" class="text-white" >waiting order</a></h6>
+                        <h2 class="m-t-0 text-white"><a href="<?php echo "order.php?page_title=waiting_order"; ?>" class="text-white"><?php echo  $waitingorder; ?></a></h2></div>
                 </div>
             </div>
         </div>

@@ -70,14 +70,41 @@
           $count=$stmt->rowcount();
           return $count;
       }
+      public function recentcount()
+      {
+        $query="
+        select id
+        FROM
+        " . $this->table_name . "
+        where kind = 'cash' and phase = 'phase1'
+        ";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+        $count=$stmt->rowcount();
+        return $count;
+      }
+      public function takeactioncount()
+      {
+        $query="
+        select id
+        FROM
+        " . $this->table_name . "
+        where kind = 'cash' and phase != 'phase1'
+        ";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+        $count=$stmt->rowcount();
+        return $count;
+      }
      public function update()
     {
-      $query="   UPDATE " . $this->table_name . " SET phase=:phase,accepted_date=:accepted_date  where id=:id";
+      $query="   UPDATE " . $this->table_name . " SET phase=:phase,status=:status,accepted_date=:accepted_date  where id=:id";
       $stmt=$this->conn->prepare($query);
       $this->timestamp = date('Y-m-d H:i:s');
       $this->name=htmlspecialchars(strip_tags($this->phase));
       $stmt->bindParam(":accepted_date", $this->timestamp);
       $stmt->bindParam(':phase', $this->phase);
+      $stmt->bindParam(':status', $this->status);
       $stmt->bindParam(':id', $this->id);
       if($stmt->execute()){
         return true;

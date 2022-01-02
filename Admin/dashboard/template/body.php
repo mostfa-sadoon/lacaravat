@@ -66,4 +66,8 @@ elseif($page_title=="order_action")
 {
     include_once 'body/order/order_action.php';
 }
+elseif($page_title=="waiting_order")
+{
+    include_once 'body/order/waiting_order.php';
+}
 ?>

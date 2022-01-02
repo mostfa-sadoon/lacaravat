@@ -17,6 +17,8 @@ $order= new Order($db);
 // to count orders in the main order page
 $allorder=$order->countall();
 $waitingorder=$order->countwaiting();
+$recentreceved=$order->recentcount();
+$takeactioncount=$order->takeactioncount();
 // to show all orders in allorderpage
 $records_per_page = 40;
 // calculate for the query LIMIT clause

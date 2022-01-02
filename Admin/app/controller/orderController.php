@@ -13,6 +13,7 @@ if(isset($_POST['accepted']))
 {
     $order= new Order($db);
     $order->id=$_POST['order_id'];
+    $order->status="false";
     $order->phase="phase2";
     $order->update();
     header("location:order.php?page_title=order_action&order_id=".$_POST['order_id']);
@@ -22,6 +23,7 @@ if(isset($_POST['finish']))
     $order= new Order($db);
     $order->id=$_POST['order_id'];
     $order->phase="phase3";
+    $order->status="true";
     $order->update();
     header("location:order.php?page_title=order_action&order_id=".$_POST['order_id']);
 }
@@ -30,6 +32,7 @@ if(isset($_POST['cancel']))
     $order= new Order($db);
     $order->id=$_POST['order_id'];
     $order->phase="cancel";
+    $order->status="false";
     $order->update();
     // in this function we use join
     $Orderdetailes= $order->orderproduct();
