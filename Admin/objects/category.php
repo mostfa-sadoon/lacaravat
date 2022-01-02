@@ -70,11 +70,9 @@ public function destroy()
     }else{
         return false;
     }   
-}
-   
+} 
 // used to read category name by its ID
-function readName(){
-      
+function readName(){     
   $query = "SELECT name ,id FROM " . $this->table_name . " WHERE id = :id limit 0,1";
   $stmt = $this->conn->prepare( $query );
   $stmt->bindParam(':id',$this->id);
@@ -83,7 +81,5 @@ function readName(){
   $this->name = $row['name'];
   $this->id = $row['id'];
 }
-
-
  }
 ?>

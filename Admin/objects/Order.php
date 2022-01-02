@@ -21,16 +21,19 @@
      public $delivery_man;
      public $delivery_number;
      public $accepted_date;
-
      public function __construct($db){
        $this->conn=$db;
      }
      public function orders($from_record_num, $records_per_page)
      {
+    //   die(print_r($from_record_num));
         $query = "SELECT*
         FROM
         " . $this->table_name . " 
-             order by id asc
+             ORDER BY
+             id ASC
+              LIMIT
+             {$from_record_num},{$records_per_page}
         ";
         $stmt = $this->conn->prepare( $query );
         if($stmt->execute())
@@ -124,8 +127,7 @@
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       $this->name = $row['name'];
     }
-
-    // inner join relation
+    // inner join relation in order action_page
     function orderproduct()
     {
       $query="select

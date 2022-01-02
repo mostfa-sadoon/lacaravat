@@ -18,11 +18,11 @@ $order= new Order($db);
 $allorder=$order->countall();
 $waitingorder=$order->countwaiting();
 // to show all orders in allorderpage
-$records_per_page = 4;
+$records_per_page = 40;
 // calculate for the query LIMIT clause
 $from_record_num = ($records_per_page * $page) - $records_per_page;
-$orders=$order->orders($records_per_page,$from_record_num);
-$page_url = "products.php?";
+$orders=$order->orders($from_record_num,$records_per_page);
+$page_url = "order.php?page_title=all_order&";
 $total_rows=$order->countall();
 include_once "app/controller/orderController.php";
 include_once "dashboard/template/admin_template.php";

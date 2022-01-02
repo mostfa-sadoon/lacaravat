@@ -62,10 +62,14 @@
                             <?php
                                 $count++;
                                 }
+                             
                             }       
                         ?>
                     </tbody>
                 </table>
+                <?php
+                       include_once 'paging.php';
+                ?>
             </div>
         </div>
     </div>
