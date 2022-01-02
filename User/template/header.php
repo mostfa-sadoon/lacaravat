@@ -69,18 +69,16 @@
                                                     <div class="u-img"><img src="assets/images/userImg.jpg" alt="user"></div>
                                                     <div class="u-text">
                                                         <h4>Steave Jobs</h4>
-                                                        <p class="text-muted"><?php echo $_SESSION['email']; ?></p></div>
-                                                        
+                                                        <p class="text-muted"><?php echo $_SESSION['email']; ?></p></div>                                                        
                                                 </div>
                                             </li>
                                             <li role="separator" class="divider"></li>
-                                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                            <li><a href="<?php echo "my_order.php?page_title=my_orders"; ?>"><i class="ti-user"></i> My orders</a></li>
                                             <li>
                                             <a href="<?php echo "logout.php" ?>"><i class="fa fa-power-off"></i> Logout </a></li>
                                         </ul>
                                     </div>
                                 </li>
-
                                   <?php
                                   }
                                 ?>

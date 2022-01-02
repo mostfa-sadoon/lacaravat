@@ -6,20 +6,13 @@ $db = $database->getConnection();
 // instantiate object table 
 $category = new Category($db);
 $product = new Product($db);
-if(isset($_GET['page_title']))
-{
-$page_title=$_GET['page_title'];
-}else{
-$page_title="order";
-}
+$page_title="my_orders";
 $Order = new Order($db);
 $Order->user_id=$_SESSION['id'];
-if(isset($_GET['id']))
-{
-    $Order->id=$_GET['id'];
-}
-$order=$Order->read();
-$products= $Order->orderproduct();
+$total_rows=$Order->myorderscount();
+$rows=$Order->myorders($from_record_num, $records_per_page);
+// $page_url = "my_order.php?page_title=my_orders&";
 include_once "template/user_templet.php";
+//to use sweet alert one time
 $_SESSION['success']="";
-?>
+?> 

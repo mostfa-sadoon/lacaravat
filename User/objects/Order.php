@@ -84,7 +84,7 @@
         }
       
       }
-       // inner join relation
+       // inner join relation to get the product in order page
         function orderproduct()
         {
           $query="select*
@@ -107,8 +107,6 @@
           }
         }
 
-
-
     // used to read category name by its ID
       function readName(){      
         $query = "SELECT name FROM " . $this->table_name . " WHERE id = :id limit 0,1";
@@ -118,6 +116,61 @@
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $this->name = $row['name'];
       }
+
+      // my orderpage
+      public function myorderscount()
+      {
+        $query="
+           select COUNT(*) 
+           from ".$this->table_name."
+           WHERE user_id = ".$this->user_id."
+        ";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+        $count = $stmt->rowCount();
+        return $count;
+      }
+      public function myorders($from_record_num, $records_per_page)
+      {
+            $query = "SELECT*
+            FROM
+            " . $this->table_name . " 
+            where 
+            user_id = '".$this->user_id."'
+                ";
+            $stmt = $this->conn->prepare( $query );
+            if($stmt->execute())
+            { 
+              $rows=$stmt->fetchall();
+              return $rows;
+            }else{
+              die(print_r($stmt->errorInfo()));
+            }
+      }
+
+       // inner join relation the product in the my order page
+       function  myorderproduct()
+       {
+         $query="select*
+         from ".$this->table_name."  o
+         inner join orderproducts  d
+         on 
+         o.id=d.order_id
+         where 
+         order_id=".$this->id."
+         ";
+         $stmt = $this->conn->prepare( $query );
+         $stmt->bindParam(':id',$this->id);
+         if($stmt->execute())
+         {
+           $rows=$stmt->fetchall();
+           return $rows;
+         }else{
+           die(print_r($stmt->errorInfo()));
+             return false;
+         }
+       }
+
 
  }
 ?>

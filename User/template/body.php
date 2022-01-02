@@ -44,4 +44,8 @@ elseif($page_title=="quantity_error")
 {
     include_once 'body/quantity_error.php';
 }
+elseif($page_title=="my_orders")
+{
+    include_once 'body/my_orders.php';
+}
 ?>
