@@ -80,7 +80,7 @@
           $order=$stmt->fetch();
           return $order;
         }else{
-          dd(print_r($stmt->errorInfo()));
+          die(print_r($stmt->errorInfo()));
         }
       
       }

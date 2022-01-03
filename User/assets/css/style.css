@@ -1384,10 +1384,9 @@ a:hover {
     color: #fcc200;
 }
 
-
-
-
-
 .body{
     background-color: red;
+}
+.profile{
+    background-color: rgb(182, 165, 165);
 }

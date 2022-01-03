@@ -1,6 +1,5 @@
 <?php
 include_once 'session.php';  
-
 // instantiate database 
 $database = new Database();
 $db = $database->getConnection();
@@ -11,7 +10,9 @@ $Order_detailes = new Order_detailes($db);
 $Order = new Order($db);
 $Order->user_id=$_SESSION['id'];
 $page_title="quantity_error";
-$stmt=$Order->read();
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
+if(isset($_GET['product_name']))
+{
+    $product_name=$_GET['product_name'];
+}
 include_once "template/user_templet.php";
 ?>

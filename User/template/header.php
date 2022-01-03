@@ -57,19 +57,18 @@
                             <li>
                                 <?php
                                   if(array_key_exists('email', $_SESSION)){?> 
-                                     <img class="profile img-fluid" src="assets/images/userImg.jpg">
-                                         <!-- Profile -->
                                 <!-- ============================================================== -->
-                                <li class="nav-item dropdown" >
-                                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="dashboard/assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
-                                    <div class="dropdown-menu dropdown-menu-right animated flipInY" >
+                                <li class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid profile" src="assets/images/userImg.jpg" alt="user" class="profile-pic" /></a>
+                                    <div class="dropdown-menu dropdown-menu-right animated flipInY ">
                                         <ul class="dropdown-user">
                                             <li>
                                                 <div class="dw-user-box">
-                                                    <div class="u-img"><img src="assets/images/userImg.jpg" alt="user"></div>
+                                                    <div class="u-img profile"><img src="assets/images/userImg.jpg" alt="user"></div>
                                                     <div class="u-text">
-                                                        <h4>Steave Jobs</h4>
-                                                        <p class="text-muted"><?php echo $_SESSION['email']; ?></p></div>                                                        
+                                                       <a href="#"><h4><?php echo $_SESSION['name']; ?></h4></a>
+                                                       <a href="#"> <?php echo $_SESSION['email']; ?></a>
+                                                    </div>                                                        
                                                 </div>
                                             </li>
                                             <li role="separator" class="divider"></li>

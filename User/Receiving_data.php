@@ -38,8 +38,9 @@
             {
             $accepted=true;                      
             }else{
-            $accepted=false;
-             header("location:quantity_error.php");
+             $accepted=false;
+             header("location:quantity_error.php?product_name=".$_SESSION['product_name'][$key]);
+             die();
             }
         }
         if($accepted==true)
