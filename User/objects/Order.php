@@ -121,9 +121,9 @@
       public function myorderscount()
       {
         $query="
-           select COUNT(*) 
+           select id
            from ".$this->table_name."
-           WHERE user_id = ".$this->user_id."
+           WHERE user_id = '".$this->user_id."'
         ";
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();
@@ -137,6 +137,7 @@
             " . $this->table_name . " 
             where 
             user_id = '".$this->user_id."'
+            order by id Desc
                 ";
             $stmt = $this->conn->prepare( $query );
             if($stmt->execute())

@@ -70,34 +70,35 @@
    </div>
 </div>
 <!-- the review of user -->
-<div class="container">
-<div class="row">
-      <?php
-         if($order['phase']=="phase3")
-         {?>
-         <div class="col-md-8">
-            <h2> your review </h2>
-               <form>
-                  <div class="form-group mt-5">
-                        <textarea type="text" class="form-control"></textarea>
+   <div class="container">
+   <div class="row">
+         <?php
+            if($order['phase']=="phase3")
+            {?>
+            <div class="col-md-8">
+               <h2> your review </h2>
+                  <form>
+                     <div class="form-group mt-5">
+                           <textarea type="text" class="form-control"></textarea>
+                     </div>
+                        <input type="submit" name="review" value="your review" class="btn btn-success">
+                  </form>
+            </div>
+            <div class="col-md-4  mt-5">
+                  <img src="assets/images/ecommerce.jpg" class="img-fluid">
+            </div>    
+            <?php
+            }elseif($order['phase']=="cancel")
+            {?>
+                  <div class="alert alert-danger mt-5" role="alert">
+                        the order is canceled
                   </div>
-                     <input type="submit" name="review" value="your review" class="btn btn-success">
-               </form>
-         </div>
-         <div class="col-md-4  mt-5">
-               <img src="assets/images/ecommerce.jpg" class="img-fluid">
-         </div>    
-         <?php
-         }elseif($order['phase']=="cancel")
-         {?>
-               <div class="alert alert-danger mt-5" role="alert">
-                     the order is canceled
-               </div>
-         <?php
-         }
-      ?> 
-<div>
-</div>
+            <?php
+            }
+         ?> 
+   <div>
+   </div>
+<!-- the end review of user -->
    <?php
    }else{?>
           <div class="alert alert-danger mt-5" role="alert">
