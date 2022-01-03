@@ -34,6 +34,6 @@
    <?php
        if($total_rows>5)
        {
-           include_once '../paging.php'; 
+           include_once 'paging.php'; 
        }
    ?>
