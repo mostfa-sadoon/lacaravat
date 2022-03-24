@@ -18,6 +18,7 @@ if(isset($_GET['id']))
 {
     $Order->id=$_GET['id'];
 }
+// die($Order->id);
 $order=$Order->read();
 $products= $Order->orderproduct();
 include_once "template/user_templet.php";

@@ -8,7 +8,7 @@ $category = new Category($db);
 $product = new Product($db);
 $page_title="checkout";
 // this process to get the img of product in the cart
-if(isset($_SESSION['product_id']))
+if($_SESSION['product_id']!=null)
 {
      $id=[];
     // print_r ($_SESSION['product_id']);

@@ -96,7 +96,7 @@
           order_id=".$this->id."
           ";
           $stmt = $this->conn->prepare( $query );
-          $stmt->bindParam(':id',$this->id);
+          // $stmt->bindParam(':id',$this->id);
           if($stmt->execute())
           {
             $rows=$stmt->fetchall();

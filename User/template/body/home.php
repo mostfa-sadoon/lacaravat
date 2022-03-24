@@ -47,9 +47,7 @@
                                 </span>
                                 <h4><?php echo $name ?></h4>
                                 <p><?php echo  substr($description,0,40);?></p>
-                                <ul class="social-icons">
-                                    <li><a href="<?php echo"productdetailes.php?page_title=".$page_title."&id=".$id."" ?>">+ View More</a></li>
-                                </ul>
+                                <li><a href="<?php echo"productdetailes.php?page_title=".$page_title."&id=".$id."" ?>">+ View More</a></li>
                             </div>
                         </div>
                         </div>
