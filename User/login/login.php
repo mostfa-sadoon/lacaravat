@@ -68,7 +68,7 @@
 					<img src="images/registration-form-1.jpg" alt="">
 				</div>
 				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-				 <input type="hidden" name="redirect" value="<?php echo $_GET['page_title']; ?>"> 
+				 <input type="hidden"  name="redirect" value="<?php if(isset( $_GET['page_title'])){echo $_GET['page_title'];}?>" > 
 					<h3>login</h3>
 				
 					<div class="form-wrapper">
